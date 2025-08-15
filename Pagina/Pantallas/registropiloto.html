@@ -12,7 +12,7 @@ document.querySelector('form.form-grid')?.addEventListener('submit', async (e) =
     e.preventDefault();
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());   
-    const res = await fetch('../../api/add_piloto.php', {
+    const res = await fetch('/ACTC.proyecto/Pagina/api/add_piloto.php', {
         method: 'POST',
         headers: {'Accept':'application/json'},
         body: JSON.stringify(payload)

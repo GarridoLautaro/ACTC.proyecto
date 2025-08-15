@@ -12,7 +12,7 @@ document.getElementById('form-campeonato')?.addEventListener('submit', async (e)
     e.preventDefault();
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());   
-    const res = await fetch('../../api/actualizar_campeonato.php', {
+    const res = await fetch('/ACTC.proyecto/Pagina/api/actualizar_campeonato.php', {
         method: 'POST',
         headers: {'Accept':'application/json'},
         body: JSON.stringify(payload)

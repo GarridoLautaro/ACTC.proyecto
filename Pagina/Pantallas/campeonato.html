@@ -6,6 +6,49 @@
     <title>Campeonato ACTC</title>
     <link rel="stylesheet" href="../style.css">
 </head>
+
+<script>
+(async function cargarTabla(){
+    const cont = document.getElementById('tabla-body');
+    cont.innerHTML = '<div class="tabla-empty">Cargando…</div>';
+    try{
+        const res = await fetch('/ACTC.proyecto/Pagina/api/listar_campeonato.php', {
+        headers: { 'Accept':'application/json' }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    const json = await res.json();
+    if (!json.ok) { cont.innerHTML = `<div class="tabla-empty">Error del servidor</div>`; return; }
+
+    const data = Array.isArray(json.data) ? json.data : [];
+    if (data.length === 0) { cont.innerHTML = '<div class="tabla-empty">No hay pilotos cargados todavía.</div>'; return; }
+
+    // Ordenar y renderizar
+    data.sort((a,b)=> (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre));
+    cont.innerHTML = '';
+    data.forEach((r, i) => {
+        const fila = document.createElement('div');
+        fila.className = 'fila';
+        fila.innerHTML = `
+            <div class="pos">${i+1}°</div>
+            <div class="num">${r.numero ?? ''}</div>
+            <div class="piloto">${(r.nombre || '').toUpperCase()}</div>
+            <div class="marca">
+                ${r.logo ? `<img src="${r.logo}" alt="${r.marca || ''}">` : ''}
+                <span>${r.marca ?? ''}</span>
+            </div>
+            <div class="pts"><span class="badge-pts">${Number(r.puntos ?? 0).toFixed(1).replace('.0','')}</span></div>
+        `;
+    cont.appendChild(fila);
+    });
+}catch(e){
+    cont.innerHTML = `<div class="tabla-empty">No se pudo cargar la tabla (${e.message}). Revisá la URL del endpoint.</div>`;
+    console.error(e);
+}
+})();
+</script>
+
+
 <body>
 
 <!-- Navbar -->
@@ -36,35 +79,5 @@
     <div class="footer-inner"><strong>FOOTER</strong></div>
 </footer>
 
-<script>
-async function cargarTabla(){
-    try {
-        const res = await fetch('../../api/listar_campeonato.php', {headers:{'Accept':'application/json'}});
-        const {ok, data} = await res.json();
-        if (!ok) return;
-        data.sort((a,b)=> (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre));
-        const cont = document.getElementById('tabla-body');
-        cont.innerHTML = '';
-        data.forEach((r, i) => {
-            const fila = document.createElement('div');
-            fila.className = 'fila';
-            fila.innerHTML = `
-                <div class="pos">${i+1}°</div>
-                <div class="num">${r.numero ?? ''}</div>
-                <div class="piloto">${(r.nombre || '').toUpperCase()}</div>
-                <div class="marca">
-                    ${r.logo ? `<img src="${r.logo}" alt="${r.marca}">` : ''}
-                    <span>${r.marca ?? ''}</span>
-                </div>
-                <div class="pts"><span class="badge-pts">${Number(r.puntos).toFixed(1).replace('.0','')}</span></div>
-            `;
-            cont.appendChild(fila);
-            });
-    } catch(err){
-    console.error(err);
-}
-}
-cargarTabla();
-</script>
 </body>
 </html>
