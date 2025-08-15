@@ -7,23 +7,6 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 
-<script>
-document.getElementById('form-campeonato')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const payload = Object.fromEntries(fd.entries());   
-    const res = await fetch('/ACTC.proyecto/Pagina/api/actualizar_campeonato.php', {
-        method: 'POST',
-        headers: {'Accept':'application/json'},
-        body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    if (data.ok) { alert('Campeonato actualizado'); e.target.reset(); }
-    else { alert('Error: ' + (data.msg || 'No se pudo actualizar')); }
-    });
-</script>
-
-
 <body>
         <!-- Navbar -->
     <nav class="navbar">
@@ -83,5 +66,27 @@ document.getElementById('form-campeonato')?.addEventListener('submit', async (e)
             <strong>FOOTER</strong>
         </div>
     </footer>
+
+    <script>
+function initActualizar(){
+    const form = document.getElementById('form-campeonato');
+    if(!form) return;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const payload = Object.fromEntries(fd.entries());
+        const res = await fetch('/ACTC.proyecto/Pagina/api/actualizar_campeonato.php', {
+            method:'POST',
+            headers:{'Accept':'application/json'},
+            body:new URLSearchParams(payload)
+        });
+    const data = await res.json();
+    if(data.ok){ alert('Campeonato actualizado'); form.reset(); }
+    else { alert('Error: '+(data.msg||'No se pudo actualizar')); }
+});
+}
+document.addEventListener('DOMContentLoaded', initActualizar);
+</script>
+
 </body>
 </html>
