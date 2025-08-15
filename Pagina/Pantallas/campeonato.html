@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato ACTC</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC"></div>
+    <ul class="nav-links">
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="campeonato.html" class="active">CAMPEONATO</a></li>
+        <li><a href="calendario.html">CALENDARIO</a></li>
+        <li><a href="campeonato.html">REGISTRO</a></li>
+    </ul>
+</nav>
+
+<!-- Contenido -->
+<main class="tabla-wrap">
+    <div class="tabla-head">
+        <div>POS.</div>
+        <div>NÚMERO</div>
+        <div>PILOTO</div>
+        <div>MARCA</div>
+        <div>PTOS.</div>
+    </div>
+    <div id="tabla-body"></div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner"><strong>FOOTER</strong></div>
+</footer>
+
+<script>
+async function cargarTabla(){
+    try {
+        const res = await fetch('../../api/listar_campeonato.php', {headers:{'Accept':'application/json'}});
+        const {ok, data} = await res.json();
+        if (!ok) return;
+        data.sort((a,b)=> (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre));
+        const cont = document.getElementById('tabla-body');
+        cont.innerHTML = '';
+        data.forEach((r, i) => {
+            const fila = document.createElement('div');
+            fila.className = 'fila';
+            fila.innerHTML = `
+                <div class="pos">${i+1}°</div>
+                <div class="num">${r.numero ?? ''}</div>
+                <div class="piloto">${(r.nombre || '').toUpperCase()}</div>
+                <div class="marca">
+                    ${r.logo ? `<img src="${r.logo}" alt="${r.marca}">` : ''}
+                    <span>${r.marca ?? ''}</span>
+                </div>
+                <div class="pts"><span class="badge-pts">${Number(r.puntos).toFixed(1).replace('.0','')}</span></div>
+            `;
+            cont.appendChild(fila);
+            });
+    } catch(err){
+    console.error(err);
+}
+}
+cargarTabla();
+</script>
+</body>
+</html>

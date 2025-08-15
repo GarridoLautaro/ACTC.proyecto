@@ -6,6 +6,24 @@
     <title>Registrar Piloto</title>
     <link rel="stylesheet" href="../style.css" />
 </head>
+
+<script>
+document.querySelector('form.form-grid')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const payload = Object.fromEntries(fd.entries());   
+    const res = await fetch('../../api/add_piloto.php', {
+        method: 'POST',
+        headers: {'Accept':'application/json'},
+        body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.ok) { alert('Piloto registrado. ID: ' + data.id); e.target.reset(); }
+    else { alert('Error: ' + (data.msg || 'No se pudo registrar')); }
+    });
+</script>
+
+
 <body class="form-page">
 
     <!-- Navbar -->
@@ -15,7 +33,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="inicio.html">INICIO</a></li>
-            <li><a href="#">CAMPEONATO</a></li>
+            <li><a href="campeonato.html">CAMPEONATO</a></li>
             <li><a href="calendario.html">CALENDARIO</a></li>
             <li><a href="registro.html">REGISTRO</a></li>
         </ul>
