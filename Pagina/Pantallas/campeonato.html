@@ -1,66 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Campeonato ACTC</title>
     <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
     <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC"></div>
     <ul class="nav-links">
         <li><a href="inicio.html">INICIO</a></li>
         <li><a href="campeonato.html" class="active">CAMPEONATO</a></li>
         <li><a href="calendario.html">CALENDARIO</a></li>
-        <li><a href="campeonato.html">REGISTRO</a></li>
+        <li><a href="registro.html">REGISTRO</a></li>
     </ul>
 </nav>
 
-<!-- Contenido -->
 <main class="tabla-wrap">
     <div class="tabla-head">
-        <div>POS.</div>
-        <div>NÚMERO</div>
-        <div>PILOTO</div>
-        <div>MARCA</div>
-        <div>PTOS.</div>
+        <div>POS.</div><div>NÚMERO</div><div>PILOTO</div><div>MARCA</div><div>PTOS.</div>
     </div>
     <div id="tabla-body"></div>
 </main>
 
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="footer-inner"><strong>FOOTER</strong></div>
-</footer>
+<footer class="site-footer"><div class="footer-inner"><strong>FOOTER</strong></div></footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', cargarTabla);
 async function cargarTabla(){
     const cont = document.getElementById('tabla-body');
     cont.innerHTML = '<div class="tabla-empty">Cargando…</div>';
     try{
-        const res = await fetch('/ACTC.proyecto/Pagina/api/listar_campeonato.php', {
-        headers:{'Accept':'application/json'}
-    });
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    const json = await res.json();
-
-    if(!json.ok){
-        cont.innerHTML = `<div class="tabla-empty">Error del servidor</div>`;
-        return;
-    }
-    const data = Array.isArray(json.data) ? json.data : [];
-    if(data.length === 0){
-        cont.innerHTML = '<div class="tabla-empty">No hay pilotos cargados todavía.</div>';
-        return;
-    }
-
-    data.sort((a,b)=> (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre));
-    cont.innerHTML = '';
-    data.forEach((r, i) => {
+        const res = await fetch('/ACTC.proyecto/Pagina/api/listar_campeonato.php', { headers:{'Accept':'application/json'} });
+        const raw = await res.text();
+        console.log('Respuesta listar_campeonato.php ->', raw);
+        if(!res.ok) throw new Error('HTTP ' + res.status + ' ' + raw.slice(0,200));
+        let json;
+        try { json = JSON.parse(raw); } catch { throw new Error('Respuesta no-JSON del servidor: ' + raw.slice(0,200)); }
+        if(!json.ok){ cont.innerHTML = `<div class="tabla-empty">Error del servidor: ${json.error || 'ok:false'}</div>`; return; }
+        const data = Array.isArray(json.data) ? json.data : [];
+        if(data.length === 0){ cont.innerHTML = '<div class="tabla-empty">No hay pilotos cargados todavía.</div>'; return; }
+        data.sort((a,b)=> (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre));
+        cont.innerHTML = '';
+        data.forEach((r, i) => {
         const fila = document.createElement('div');
         fila.className = 'fila';
         fila.innerHTML = `
@@ -68,19 +53,18 @@ async function cargarTabla(){
             <div class="num">${r.numero ?? ''}</div>
             <div class="piloto">${(r.nombre || '').toUpperCase()}</div>
             <div class="marca">
-                ${r.logo ? `<img src="${r.logo}" alt="${r.marca || ''}">` : ''}
+                ${r.logo ? `<img src="${r.logo}" alt="${r.marca || ''}" onerror="this.remove()">` : ''}
                 <span>${r.marca ?? ''}</span>
             </div>
             <div class="pts"><span class="badge-pts">${Number(r.puntos ?? 0).toFixed(1).replace('.0','')}</span></div>
         `;
-    cont.appendChild(fila);
+        cont.appendChild(fila);
     });
-}catch(e){
+    }catch(e){
     cont.innerHTML = `<div class="tabla-empty">No se pudo cargar la tabla (${e.message}).</div>`;
     console.error(e);
 }
 }
-document.addEventListener('DOMContentLoaded', cargarTabla);
 </script>
 </body>
 </html>

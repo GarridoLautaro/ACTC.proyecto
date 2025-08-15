@@ -6,74 +6,60 @@
     <title>Registrar Piloto</title>
     <link rel="stylesheet" href="../style.css" />
 </head>
+<body>
 
-<body class="form-page">
+<nav class="navbar">
+    <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC" /></div>
+    <ul class="nav-links">
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="campeonato.html">CAMPEONATO</a></li>
+        <li><a href="calendario.html">CALENDARIO</a></li>
+        <li><a href="registro.html" class="active">REGISTRO</a></li>
+    </ul>
+</nav>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="Recursos/LOGO.png" alt="Logo ACTC" />
-        </div>
-        <ul class="nav-links">
-            <li><a href="inicio.html">INICIO</a></li>
-            <li><a href="campeonato.html">CAMPEONATO</a></li>
-            <li><a href="calendario.html">CALENDARIO</a></li>
-            <li><a href="registro.html">REGISTRO</a></li>
-        </ul>
-    </nav>
-
-    <!-- Formulario -->
     <main class="container">
         <section class="card">
             <header class="header">
                 <h1 class="title">Registro de Piloto</h1>
-                <p class="subtitle">Completá todos los campos para dar de alta un nuevo piloto en la ACTC.</p>
-            </header>
-            
-            <form class="form-grid" action="#" method="post">
-                <div class="field">
-                    <label for="nombre">Nombre del piloto</label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
-                </div>
-
-                <div class="field">
-                    <label for="edad">Edad</label>
-                    <input type="number" id="edad" name="edad" required min="16" max="80" placeholder="Ej: 25">
-                </div>
-
-                <div class="field">
-                    <label for="numero">Número</label>
-                    <input type="number" id="numero" name="numero" required placeholder="Ej: 15">
-                </div>
-
-                <div class="field">
-                    <label for="marca">Marca donde corre</label>
-                    <select id="marca" name="marca" required>
-                        <option value="">Seleccioná una marca</option>
-                        <option value="Ford">Ford</option>
-                        <option value="Chevrolet">Chevrolet</option>
-                        <option value="Toyota">Toyota</option>
-                        <option value="Renault">Renault</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label for="ciudad">Ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad" required placeholder="Ej: Buenos Aires">
-                </div>
-
+                <p class="subtitle">Completá los campos para dar de alta un nuevo piloto.</p>
+            </header>   
+            <form id="form-piloto" class="form-grid" action="/ACTC.proyecto/Pagina/api/add_piloto.php" method="post">
                 <div class="field">
                     <label for="id">ID de Piloto (opcional)</label>
                     <input type="number" id="id" name="id" min="1" placeholder="Dejar vacío para automático">
                     <span class="hint">Si lo dejás vacío, se genera automáticamente.</span>
-                </div>
-
-
+                </div>    
+                <div class="field">
+                    <label for="nombre">Nombre del piloto</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                </div>    
+                <div class="field">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="edad" min="16" max="80" placeholder="Ej: 25">
+                </div>    
+                <div class="field">
+                    <label for="numero">Número</label>
+                    <input type="number" id="numero" name="numero" required placeholder="Ej: 15">
+                </div>    
+                <div class="field">
+                    <label for="marca">Marca donde corre</label>
+                    <select id="marca" name="marca" required>
+                        <option value="">Seleccioná una marca</option>
+                        <option>Ford</option>
+                        <option>Chevrolet</option>
+                        <option>Toyota</option>
+                        <option>Renault</option>
+                    </select>
+                </div>    
+                <div class="field">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Buenos Aires">
+                </div>    
                 <div class="field full">
                     <label for="observaciones">Observaciones</label>
-                    <textarea id="observaciones" name="observaciones" rows="4" required placeholder="Escriba aquí cualquier comentario adicional..."></textarea>
-                </div>
-
+                    <textarea id="observaciones" name="observaciones" rows="4" placeholder="Comentarios..."></textarea>
+                </div>    
                 <div class="actions">
                     <button type="reset" class="btn btn-ghost">Resetear</button>
                     <button type="submit" class="btn btn-primary">Enviar</button>
@@ -82,34 +68,38 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-inner">
-            <strong>FOOTER</strong>
-        </div>
+        <div class="footer-inner"><strong>FOOTER</strong></div>
     </footer>
 
 <script>
-function initRegistroPiloto(){
-    const form = document.querySelector('form.form-grid');
-    if(!form) return;
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-piloto');
+    if (!form) return;
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const fd = new FormData(form);
-        const payload = Object.fromEntries(fd.entries());
-        const res = await fetch('/ACTC.proyecto/Pagina/api/add_piloto.php', {
-            method:'POST',
-            headers:{'Accept':'application/json'},
-            body:new URLSearchParams(payload)
-        });
-        const data = await res.json();
-        if(data.ok){ alert('Piloto registrado. ID: '+data.id); form.reset(); }
-        else { alert('Error: '+(data.msg||'No se pudo registrar')); }
+        try {
+            const fd = new FormData(form);
+            const res = await fetch(form.action, { method: 'POST', body: fd });
+            const raw = await res.text();
+            console.log('Respuesta cruda add_piloto.php ->', raw);
+            let data;
+            try { data = JSON.parse(raw); } catch {
+                alert('La API no devolvió JSON. Revisá la consola (F12).');
+                return;
+            }
+            if (data.ok) {
+                alert('Piloto registrado. ID: ' + data.id);
+                form.reset();
+            } else {
+                alert('Error: ' + (data.msg || 'No se pudo registrar'));
+            }
+        } catch (err) {
+        console.error(err);
+        alert('Fallo de red o ruta incorrecta hacia add_piloto.php');
+    }
     });
-}
-document.addEventListener('DOMContentLoaded', initRegistroPiloto);
+});
 </script>
-
-
 </body>
 </html>
