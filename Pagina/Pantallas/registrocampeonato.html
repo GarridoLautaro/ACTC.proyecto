@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Actualizar Campeonato</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+        <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Recursos/LOGO.png" alt="Logo ACTC" />
+        </div>
+        <ul class="nav-links">
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="#">CAMPEONATO</a></li>
+            <li><a href="calendario.html">CALENDARIO</a></li>
+            <li><a href="registro.html">REGISTRO</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+    <section class="card">
+        <header class="header">
+            <h1 class="title">Actualizar Campeonato</h1>
+            <p class="subtitle">Ingresá el <strong>ID del piloto</strong>, el <strong>puntaje sumado</strong> y la <strong>marca</strong> para registrar la actualización.</p>
+        </header>   
+        <form id="form-campeonato" action="#" method="post" novalidate>
+            <div class="grid">
+                <div class="field">
+                    <label for="piloto_id">ID de Piloto</label>
+                    <input id="piloto_id" name="piloto_id" type="number" inputmode="numeric" placeholder="Ej: 23" min="1" step="1" required />
+                    <span class="error" id="err-id">Ingresá un ID válido (número entero mayor a 0).</span>
+                </div>  
+                <div class="field">
+                    <label for="puntaje">Puntaje sumado</label>
+                    <input id="puntaje" name="puntaje" type="number" inputmode="decimal" placeholder="Ej: 15" min="0" step="0.5" required />
+                    <span class="hint">Admite decimales (ej.: 7.5)</span>
+                    <span class="error" id="err-pts">Ingresá un puntaje válido (0 o más).</span>
+                </div>
+            </div>    
+            <div class="grid">
+                <div class="field">
+                    <label for="marca">Marca</label>
+                    <select id="marca" name="marca" required>
+                        <option value="">Seleccioná una marca</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Renault">Renault</option>
+                    </select>
+                </div>
+            </div>    
+            <div class="actions">
+                <button type="reset" class="btn btn-ghost">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </form>
+    </section>
+    </main>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <strong>FOOTER</strong>
+        </div>
+    </footer>
+</body>
+</html>

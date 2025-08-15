@@ -118,12 +118,19 @@ main { flex: 1 0 auto; }
 .calendar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 
 .event-card {
+    border-radius: 8px;
     position: relative;
     background: #fff;
     border: 1px solid #e6e6e6;
     box-shadow: 0 2px 6px rgba(0,0,0,.06);
     padding: 22px 18px 60px;
     min-height: 340px;
+    transition: all 1s ease;
+}
+
+.event-card:hover {
+    transform: scale(1.060);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4); 
 }
 
 .date-badge {
@@ -153,12 +160,12 @@ main { flex: 1 0 auto; }
 .podium b { color: #e53935; margin-right: 6px; font-weight: 700; }
 
 .more {
+    border-radius: 50px;
     position: absolute; right: 14px; bottom: 14px;
     background: #e53935; color: #fff;
     border: 1px solid #e53935; padding: 8px 14px; font-size: 13px;
     cursor: pointer; transition: transform .1s ease, opacity .2s ease;
 }
-.more:hover { opacity: .9; transform: translateY(-1px); }
 
 /* ========== PÁGINA DE REGISTRO (landing) ========== */
 body.registro-page { background: #bfbfbf; }
@@ -185,10 +192,26 @@ body.registro-page { background: #bfbfbf; }
     text-decoration: none; cursor: pointer;
     transition: transform .1s ease, opacity .2s ease, background .2s ease, border-color .2s ease;
 }
-.btn-primary { background: #e53935; color: #fff; border: 1px solid #e53935; }
-.btn-primary:hover { opacity: .92; transform: translateY(-1px); }
-.btn-outline  { background: transparent; color: #e53935; border: 1px solid #e53935; }
-.btn-outline:hover { background: #ffeaea; transform: translateY(-1px); }
+.btn-primary,
+.btn-outline {
+    background: transparent;
+    color: #e53935;
+    border: 1px solid #e53935;
+    transition: background .2s ease, transform .1s ease, opacity .2s ease;
+}
+
+.btn-primary:hover,
+.btn-outline:hover {
+    background: #ffeaea;   /* un rojo muy suave al pasar el mouse */
+    transform: translateY(-1px);
+}
+
+/* Fondo con imagen en página de registro */
+body.registro-page {
+    background: url("../Pagina/Pantallas/Recursos/imagen\ background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
 
 /* ========== FORMULARIO: REGISTRAR PILOTO ========== */
 .form-container { padding: 100px 20px 50px; max-width: 600px; margin: 0 auto; }
@@ -233,4 +256,97 @@ body.registro-page { background: #bfbfbf; }
 @media (max-width: 640px) {
     .calendar-grid { grid-template-columns: 1fr; }
     .event-card { min-height: 320px; }
+}
+
+/* ============================================================
+    ========== FORMULARIO: ACTUALIZAR CAMPEONATO (NUEVO) ========
+   ============================================================ */
+
+/* contenedor general (centrado y ancho máximo similar al sitio) */
+.container {
+    width: 100%;
+    max-width: 720px;
+    padding: 30px 20px 60px;
+    margin: 0 auto;
+}
+
+/* tarjeta del formulario (look consistente con tu tema) */
+.card{
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    overflow: hidden;
+}
+
+/* cabecera del form */
+.header{
+    padding: 20px 20px 6px;
+}
+.title{
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: #e53935; /* acento rojo del sitio */
+}
+.subtitle{
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* cuerpo del form */
+form{
+    padding: 18px 20px 22px;
+    display: grid;
+    gap: 16px;
+}
+
+.grid{
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 680px){
+    .grid{ grid-template-columns: 1fr 1fr; }
+}
+
+.field{ display: flex; flex-direction: column; gap: 8px; }
+label{ font-size: 14px; color: #333; }
+
+input[type="number"], input[type="text"], select{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #222;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .04s ease;
+}
+input::placeholder{ color: #8a8a8a; }
+input:focus, select:focus{
+    border-color: #e53935;
+    box-shadow: 0 0 0 4px rgba(229,57,53,.15);
+}
+
+.hint{ font-size: 12px; color: #666; }
+.error{ color: #e53935; font-size: 12px; display: none; }
+
+/* acciones (reutiliza tus botones) */
+.actions{ display: flex; gap: 12px; justify-content: flex-end; padding-top: 6px; }
+.actions .btn { border-radius: 8px; }
+.actions .btn-ghost{
+    background: transparent;
+    color: #222;
+    border: 1px solid #d9d9d9;
+}
+.actions .btn-ghost:hover{
+    background: #f4f4f4;
+}
+
+/* responsive extra para el form */
+@media (max-width: 480px){
+    .container{ padding: 24px 14px 50px; }
+    .title{ font-size: 22px; }
 }
