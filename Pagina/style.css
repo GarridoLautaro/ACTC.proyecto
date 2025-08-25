@@ -1,365 +1,372 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap'); 
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+*{ 
+    margin:0; 
+    padding:0; 
+    box-sizing:border-box; 
+}   
+
+html,body{ 
+    height:100%; 
+}   
+
+body{                                                            
+    font-family:'Roboto', Arial, Helvetica, sans-serif;             
+    background:#272727;                                    
+    color:#eaeaea;                                               
+    display:flex; 
+    flex-direction:column;                      
 }
-html,body{
-    height:100%;
-}
-body{
-    font-family:'Roboto',Arial,Helvetica,sans-serif;
-    background:#272727;
+main{ 
+    flex:1 0 auto; /* mantiene el footer abajo (siempre)*/
+}                                           
+
+/*  Navbar  */
+.navbar{                                                        
     display:flex;
-    flex-direction:column;
+    align-items:center; 
+    gap:20px;   /* ver*/
+    background:#000; 
+    padding:12px 20px;                           
 }
-
-/* main para que el footer se manetenga debajo*/
-
-main{
-    flex:1 0 auto;
+.logo img{   /* ver */
+    height:56px; 
+    width:auto; 
+    display:block; 
+}    
+.enlaces{ 
+    display:flex; 
+    gap:28px;
+    list-style:none; 
 }
-
-/* navbar */
-.navbar{
-    display:flex;
-    background:#000;
-    padding:10px 20px;
+.enlaces a{ 
+    color:#3498db; 
+    text-decoration:none; 
+    font-size:18px; 
 }
-.logo img{
-    height:60px;
-    width:100px;
-}
-.enlaces{
-    display:flex;
-    gap:50px;
-    margin-left:25px;
-    margin-top: 20px;
-}
-.enlaces a{
-    color:#3498db;
-    text-decoration:none;
-    font-size:20px;
-}
-
-/* Layouts generales */
-
-.fondo{
-    padding:300px 20px;
-}
-
-/* Pantalla Inicio */
-.caja-superior{
-    width: 1200px;
-    height: 600px;
-    margin:0 auto;
-    background:#757575;
-    padding:22px;
-    border-radius:6px;
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:18px;
-}
-.recuadro{
-    height: 550px;
-    background:#f70000;
-    border-radius:8px;
-    padding:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.recuadro img{
-    width:100%;
-    height:360px;
-    object-fit:cover;
-    border-radius:9px;
-}
-
-.titulo{
-    color:#fff;
-    font-weight:300;
-    margin:10px 0 20px;
-    margin-left: 210px;
-}
-.texto{
-    color:#f2f1ea;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-.parrafo{
-    font-size: 20px;
-    line-height:1.9;
-    color:#f2f1ea;
-}
-.sub {
-    color:#fff8f8;
-    margin-top:6px;
-}
-
-.redes h2{
-    color:#ffffff;
-    margin-top:130px;
-    text-align:center;
-}
-.iconos{
-    margin-top: 15px;
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    margin-left:40px;
-    background:transparent;
-}
-
-.boton-icono img{
-    width:50px;
-    height:40px;
-}
-
-/* Calendario */
-
-.tarjeta{
-    position:relative;
-    background:#fff;
-    border:1px solid #e6e6e6;
-    border-radius:8px;
-    padding:22px 18px 60px;
-    min-height:340px;
-    box-shadow:0 2px 6px rgba(0,0,0,.06);
-}
-
-.fecha{
-    position:absolute;
-    top:14px;
-    display:inline-flex;
-}
-
-.dia{
-    background:#111;
-    color:#fff;
-    font-weight:700;
-    font-size:22px;
-    line-height:1;
-    padding:8px 10px;
-    min-width:40px;
-    text-align:center;
-}
-
-.mes{
-    background:#efefef;
-    color:#555;
-    font-weight:700;
-    font-size:14px;letter-spacing:.5px;
-    padding:8px 10px;
-}
-
-.cabecera{
-    margin:48px 0 10px;
-}
-
-.sub{
-    color:#666;
-}
-
-.pista img{
-    width:100%;
-    height:170px;
-    object-fit:contain;
-}
-
-.mas{
-    position:absolute;
-    right:14px;bottom:14px;
-    background:#e53935;
-    color:#fff;border:1px solid #e53935;
-    border-radius:50px;
-    padding:8px 14px;
-    font-size:19px;
-}
-
-/* Pagina Registro */
-body.fondo-registro{
-    background: url("Pantallas/Recursos/imagen%20background.jpg") center/cover no-repeat fixed;
-}
+.enlaces a.activo{ 
+    color:#fff; 
+    font-weight:700; 
+}             
 
 .contenedor{
-    margin-top: 200px;
-    padding:40px 20px;           /* sin empuje artificial */
+    max-width:1200px;                                       
+    margin:0 auto; 
+    padding:40px 16px;                             
 }
 
-.caja{
-    width: 160vh;
-    height: 1200px;
-    margin:40px auto;
-    display:flex;
-    align-items:center;
-    gap:24px;
-    background:rgba(255,255,255,.92);
-    padding:20px;
-    border-radius:12px;
+/* Títulos (generales) */
+.titulo{
+    color:#fff; 
+    font-weight:700;                                   
+    text-align:center; 
+    margin:0 0 16px;                          
+}
+.titulo.rojo{ 
+    color:#e53935; 
+}                                  
+
+/* pantalla inicio */
+.fondo{ 
+    padding:40px 16px; 
+}                                  
+
+.caja-superior{                                                  
+    max-width:1200px;                                             
+    margin:0 auto;  
+    margin-top: 180px;                                               
+    background:#ffffff; 
+    color:#222;                               
+    border-radius:14px;                                           
+    padding:30px;                                                 
+    display:grid;                                                 
+    grid-template-columns: 1.15fr 1fr;                              
+    gap:18px;
+    align-items:center;                                                 
 }
 
-.imagen{
-    width: 1800px;
-    height:800px;
-    padding:20px 50px;
-    object-fit:cover;
-    border-radius:8px;
+.recuadro{                                                      
+    width:100%; 
+    height:420px;                               
+    border-radius:12px; 
+    overflow:hidden;                         
+    background:#f2f2f2;                                            
+    display:flex; 
+    align-items:center; 
+    justify-content:center;      
+}
+.recuadro img{ 
+    width:100%; 
+    height:100%; 
+    object-fit:cover; 
+    display:block; 
 }
 
-.info{
-    flex:1 1 52%;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    color:#222;
-}
-
-
-.info .titulo{ 
+.texto{ 
+    display:flex; 
+    flex-direction:column; 
+    gap:10px; 
+}        
+.caja-superior .titulo{ 
+    color:#111; 
     font-size: 40px;
-    margin-left: 320px;
-    color: #272727;
-}
-
-.info .parrafo{ 
-    font-size: 24px;
+    text-align:center; 
+    margin-bottom:8px; 
+} 
+.parrafo{ 
     color:#333; 
-    margin-left: 220px;
-    line-height:1.6; 
-}
-.info .sub{ 
-    font-size: 34px;
-    color:#444; 
-    margin-top:28px; 
+}                      
+.sub{ 
     text-align: center;
+    color:#444; 
+    font-weight:700; 
+    margin-top:8px; 
+    margin-bottom: 10px;
+}               
+.iconos{ 
+    display:flex; 
+    gap:12px; 
+    margin-top:8px; 
+} 
+.boton-icono{
+    background-color: #666;
+    display:inline-block; 
+    padding:8px 12px;                          
+    border-radius:8px;                        
+    color:#111; 
+    text-decoration:none;                               
 }
 
-/* botones */
-.boton{
-    width: 150px;
-    height: 80px;
-    padding:10px 14px;
-    border-radius:8px;
-    text-decoration:none;
-    background:#fff;
+/* Pagina calendario*/
+.grilla{                                                          
+    display:grid;                                                   
+    gap:20px;                                                        
+}
+@media (min-width: 1200px){
+    .grilla{ grid-template-columns: repeat(3, 1fr); }           
+}
+
+.tarjeta{                                                         
+    position:relative;                                     
+    background:#fff; 
+    color:#222;                                   
+    border:1px solid #e6e6e6; 
+    border-radius:12px;                  
+    padding:16px;                                                   
+    display:flex; 
+    flex-direction:column;                           
+    min-height:360px;                       
+}
+.fecha{                                                            
+    position:absolute; 
+    top:12px; 
+    left:12px;                          
+    display:inline-flex; 
+    overflow:hidden;      
+}
+.dia{
+    background:#111; 
+    color:#fff; 
+    font-weight:700; 
+    font-size:18px;   
+    line-height:1; 
+    padding:8px 10px; 
+    text-align:center;
+    min-width:38px; 
+}
+.mes{
+    background:#efefef; 
+    color:#555; 
+    font-weight:700;                 
+    font-size:13px; 
+    letter-spacing:.5px; 
+    padding:8px 10px;           
+}
+.cabecera{ 
+    margin-top:45px; 
+    margin-bottom:8px; 
+}                   
+.cabecera h2{ 
+    font-size:20px; 
+    margin-bottom:4px; 
+}               
+.cabecera .sub{ 
+    color:#666; 
+    font-weight:400; 
+}                    
+
+.pista{ 
+    margin-top:6px; 
+}                                        
+.pista img{ 
+    width:100%; 
+    height:180px; 
+    display:block; 
+}
+
+.mas{                                                              
+    margin-top:auto; 
+    align-self:flex-end;                       
+    background:#e53935; 
+    color:#fff;                               
+    border:1px solid #e53935; 
+    border-radius:20px;                 
+    padding:8px 12px; 
+    font-size:15px; 
+    cursor:pointer;               
+}
+
+/* Pagina registro */
+.fondo-registro{
+    background:                                                       
+    url("../Pagina/Pantallas/Recursos/imagen\ background.jpg") center center / cover no-repeat fixed;
+    min-height:100vh;                                                
+}
+
+/* caja de registro*/
+.caja{
+    max-width:1400px; 
+    margin:40px auto;                             
+    display:grid;     
+    gap:20px;                                  
+    background:#ffffff; 
+    color:#222;                                 
+    border-radius:14px; 
+    padding:18px;        
+    text-align: center;                                      
+}
+.caja .imagen{ 
+    width:100%; 
+    height:480px; 
+    border-radius:12px; 
+} 
+.caja .info{ 
+    display:flex; 
+    flex-direction:column; 
+    gap:10px; 
+}       
+.caja .info .titulo{ 
+    color:#111; 
+}               
+
+.boton{ 
+    padding:12px 16px;                        
+    border-radius:8px; 
+    border:1px solid #e53935;                  
+    background:#fff; 
+    color:#e53935; 
+    font-weight:700;                 
+    text-decoration:none; 
+    font-size:15px;                             
+}                
+.acciones{ 
+    display:flex; 
+    gap:12px; 
+    margin-top:16px; 
+}            
+.acciones{ 
+    justify-content:center; 
+}                                    
+
+/* Formularios*/
+.grilla-form{
+    display:grid;                                                     
+    grid-template-columns: repeat(2, minmax(0,1fr));       
+    gap:6px;                                                         
+}
+.campo{ 
+    display:flex; 
+    flex-direction:column; 
+    gap:28px; 
+}   
+
+.grilla-form .acciones{
+    grid-column: 1 / -1;
+    justify-content: center;
+}
+
+label{ 
+    margin-top: 40px;
+    font-size:15px; 
+    color:#333; 
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px 14px;
     border:1px solid #ccc;
+    border-radius:8px;
+    background:#fff;
     color:#222;
-    margin: 10px;
+    font-size:16px;
 }
 
-.acciones{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:8px;
-    margin-left: 510px;
+textarea{ 
+    min-width:320px; 
+    min-height: 140px;
+    resize:vertical; 
 }
 
-.boton-primario{ 
-    margin-top: 5px;
-    border-color:#e53935; 
-    color:#e53935; 
-}
-.boton-borde{ 
-    margin-top: 5px;
-    border-color:#e53935; 
-    color:#e53935; 
+input::placeholder, textarea::placeholder{
+    color:#8a8a8a; 
 }
 
-/* Formularios */
-.cabecera{
-    padding:10px 10px 0;
-}
-.caja form{
-    padding:14px 10px 16px;
-    display:grid;gap:14px;
-}
-.grilla{
-    display:grid;
-    gap:14px;
-}
-@media(min-width:680px){.grilla{grid-template-columns:1fr 1fr}}
-
-.campo{display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-label{
-    font-size:14px;
-    color:#333;
-}
-input[type="number"],input[type="text"],select,textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;color:#222;outline:none}
-input::placeholder,textarea::placeholder{color:#8a8a8a}
-.ayuda{font-size:12px;color:#666}
-.error{font-size:12px;color:#e53935;display:none}
-.ancho .caja{max-width:900px;margin:0 auto}
-.grilla-form{padding:10px;display:grid;gap:14px;grid-template-columns:1fr 1fr}
-.grilla-form .completo{grid-column:span 2}
-.acciones.derecha{justify-content:flex-end}
-.acciones.centro{justify-content:center}
-
-/* Tabla campeonato */
-.tabla{
-    max-width:1000px;
-    margin:40px auto;
-    background:#fff;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-}
-.tabla-encabezado{
-    display:grid;
-    grid-template-columns:70px 90px 1fr 140px 120px;
-    background:#3a3a3a;
-    color:#fff;
-    padding:12px 16px;
-    font-weight:700;
-    letter-spacing:.5px;
-}
-.fila{
-    display:grid;
-    grid-template-columns:70px 90px 1fr 140px 120px;
-    align-items:center;
-    padding:14px 16px;
-    border-bottom:1px solid #eee;
-    background:#fff;
-}
-.fila:nth-child(odd){background:#fafafa}
-.pos{font-weight:700;color:#555}
-.num{color:#666;font-weight:700}
-.piloto{font-weight:800;letter-spacing:.5px;color:#2c2c2c}
-.marca{display:flex;align-items:center;gap:8px}
-.marca img{height:22px;width:auto;object-fit:contain}
-.pts{text-align:right}
-.cifra{display:inline-block;padding:8px 14px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f44336 0%,#e53935 100%);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);min-width:88px;text-align:right}
-
-/* Pie */
-.pie{
-    background:#1b1b1b;
-    color:#fff;
-    padding:40px 20px 20px;
-}
+/* Footer */
+.pie{ background:#1b1b1b; 
+    color:#fff; 
+    padding:30px 20px 20px; 
+}    
 .pie-contenedor{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    flex-wrap:wrap;
-    max-width:1200px;
-    margin:0 auto;
-    gap:16px;
+    display:flex; 
+    justify-content:space-between; 
+    align-items:flex-start; 
+    flex-wrap:wrap; 
+    gap:16px; 
+    max-width:1200px; 
+    margin:0 auto;      
 }
-.pie-logo img{
-    width:120px;
-}
-.pie-links h3,.pie-redes h3{margin-bottom:10px;color:#f44336}
-.pie-links ul{list-style:none}
-.pie-links li{margin-bottom:8px}
-.pie a{text-decoration:none;color:#fff}
-.pie a:hover{color:#f44336}
-.redes-iconos a{display:inline-block;margin-right:12px}
-.redes-iconos img{width:30px;height:30px}
-.pie-bottom{text-align:center;margin-top:18px;font-size:14px;color:#aaa}
+.pie-logo img{ 
+    width:120px; 
+    display:block; 
+}                      
+.pie-links h3,.pie-redes h3{ 
+    margin-bottom:8px; 
+    color:#f44336; 
+}   
+.pie-links ul{ 
+    list-style:none; 
+}                                   
+.pie-links li{ 
+    margin-bottom:6px; 
+}                               
+.pie a{ 
+    text-decoration:none; 
+    color:#fff; 
+}                        
+.pie a:hover{
+    color:#f44336; 
+}                                     
+.redes-iconos a{ 
+    display:inline-block; 
+    margin-right:12px; 
+}      
+.redes-iconos img{ 
+    width:28px; 
+    height:28px; 
+    display:block; 
+}       
+.pie-bottom{ 
+    text-align:center; 
+    margin-top:12px; 
+    font-size:14px; 
+    color:#aaa; 
+} 
 
+/* ==== Responsive ==== */
+@media (max-width: 900px){                                          /* Reglas para pantallas chicas */
+    .caja-superior{ grid-template-columns: 1fr; }                     /* Inicio: imagen y texto apilados */
+    .caja{ grid-template-columns: 1fr; }                              /* Cualquier card en una columna */
+    .grilla-form{ grid-template-columns: 1fr; }                       /* Formularios a una sola columna */
+    .recuadro{ height:300px; }                                        /* Imagen de inicio más baja */
+    .caja .imagen{ height:320px; }                                    /* Altura de imagen en cards */
+}

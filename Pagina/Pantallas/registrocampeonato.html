@@ -19,26 +19,25 @@
 </nav>
 
 <main class="contenedor">
-  <section class="caja">
+  <!-- SOLO este cambio: caja -> caja caja-form -->
+  <section class="caja caja-form">
     <header class="cabecera">
       <h1 class="titulo rojo">Actualizar Campeonato</h1>
-      <p class="sub">Ingresá el ID del piloto, el puntaje sumado y la marca.</p>
     </header>
+
     <form id="form-campeonato" action="/ACTC.proyecto/Pagina/api/actualizar_campeonato.php" method="post" novalidate>
-      <div class="grilla">
+      <div class="grilla-form">
         <div class="campo">
           <label for="piloto_id">ID de Piloto</label>
-          <input id="piloto_id" name="piloto_id" type="number" inputmode="numeric" placeholder="Ej: 23" min="1" step="1" required />
-          <span class="error" id="err-id">Ingresá un ID válido.</span>
+          <input id="piloto_id" name="piloto_id" type="number" placeholder="Ej: 23" min="1" required />
         </div>
         <div class="campo">
           <label for="puntaje">Puntaje sumado</label>
-          <input id="puntaje" name="puntaje" type="number" inputmode="decimal" placeholder="Ej: 15" min="0" step="0.5" required />
-          <span class="ayuda">Podés usar decimales.</span>
-          <span class="error" id="err-pts">Ingresá un puntaje válido.</span>
+          <input id="puntaje" name="puntaje" type="number" inputmode="decimal" placeholder="Ej: 15" />
         </div>
       </div>
-      <div class="grilla">
+
+      <div class="grilla-form">
         <div class="campo">
           <label for="marca">Marca</label>
           <select id="marca" name="marca" required>
@@ -50,6 +49,7 @@
           </select>
         </div>
       </div>
+
       <div class="acciones derecha">
         <button type="reset" class="boton boton-borde">Cancelar</button>
         <button type="submit" class="boton boton-primario">Actualizar</button>

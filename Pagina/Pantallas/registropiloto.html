@@ -18,30 +18,33 @@
   </ul>
 </nav>
 
-<main class="contenedor ancho">
-  <section class="caja">
+<main class="contenedor">
+  <section class="caja caja-form">
     <header class="cabecera">
       <h1 class="titulo rojo">Registro de Piloto</h1>
-      <p class="sub">Completá los campos para dar de alta un nuevo piloto.</p>
     </header>
+
     <form id="form-piloto" class="grilla-form" action="/ACTC.proyecto/Pagina/api/add_piloto.php" method="POST">
       <div class="campo">
         <label for="id">ID de Piloto (opcional)</label>
         <input type="number" id="id" name="id" min="1" placeholder="Dejar vacío para automático">
-        <span class="ayuda">Si lo dejás vacío, se genera automáticamente.</span>
       </div>
+
       <div class="campo">
         <label for="nombre">Nombre del piloto</label>
         <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
       </div>
+
       <div class="campo">
         <label for="edad">Edad</label>
         <input type="number" id="edad" name="edad" min="16" max="80" placeholder="Ej: 25">
       </div>
+
       <div class="campo">
         <label for="numero">Número</label>
         <input type="number" id="numero" name="numero" required placeholder="Ej: 15">
       </div>
+
       <div class="campo">
         <label for="marca">Marca donde corre</label>
         <select id="marca" name="marca" required>
@@ -52,14 +55,17 @@
           <option>Renault</option>
         </select>
       </div>
+
       <div class="campo">
         <label for="ciudad">Ciudad</label>
         <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Buenos Aires">
       </div>
+
       <div class="campo completo">
         <label for="observaciones">Observaciones</label>
         <textarea id="observaciones" name="observaciones" rows="4" placeholder="Comentarios..."></textarea>
       </div>
+
       <div class="acciones centro">
         <button type="reset" class="boton boton-borde">Resetear</button>
         <button type="submit" class="boton boton-primario">Enviar</button>
@@ -91,6 +97,5 @@
   </div>
   <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
 </footer>
-
 </body>
 </html>
