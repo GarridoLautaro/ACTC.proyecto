@@ -261,13 +261,25 @@ main{
     margin-top:16px; 
 }            
 .acciones{ 
-    justify-content:center; 
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px; 
 }                                    
 
 /* Formularios*/
+.caja-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+}
+
 .grilla-form{
+    width: 500px;
     display:grid;                                                     
-    grid-template-columns: repeat(2, minmax(0,1fr));       
+    grid-template-columns: 1fr;
     gap:6px;                                                         
 }
 .campo{ 

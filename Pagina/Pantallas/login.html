@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Registro ACTC</title>
+    <title>Registro de Usuario</title>
     <link rel="stylesheet" href="../style.css" />
 </head>
-<body class="fondo-registro">
+<body>
 
 <nav class="navbar">
-    <div class="logo">
-        <img src="Recursos/LOGO.png" alt="Logo ACTC" />
-    </div>
-        <ul class="enlaces">
+    <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC" /></div>
+    <ul class="enlaces">
         <li><a href="inicio.html">INICIO</a></li>
         <li><a href="campeonato.html">CAMPEONATO</a></li>
         <li><a href="calendario.html">CALENDARIO</a></li>
@@ -22,19 +20,29 @@
 </nav>
 
 <main class="contenedor">
-    <div class="caja">
-        <img src="Recursos/registro_img.jpg" alt="Carrera ACTC" class="imagen" />
-        <div class="info">
-            <h1 class="titulo">Asociación Corredores de Turismo Carretera (ACTC)</h1>
-            <p class="parrafo">La ACTC regula y organiza el Turismo Carretera, la categoría más antigua y popular del automovilismo argentino.</p>
-            <p class="parrafo">Con un calendario federal, combina tradición y modernidad, promoviendo el crecimiento de nuevos talentos.</p>
-            <h2 class="sub">¿Qué desea registrar?</h2>
-            <div class="acciones">
-                <a class="boton" href="registropiloto.html">Registrar piloto</a>
-                <a class="boton" href="registrocampeonato.html">Actualizar campeonato</a>
-            </div>
+    <section class="caja caja-form">
+        <header class="cabecera">
+            <h1 class="titulo rojo">Login</h1>
+        </header> 
+        <form id="form-usuario" class="grilla-form" action="../api/add_usuario.php" method="POST">
+        <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+        </div>    
+        <div class="campo">
+            <label for="pass">Contraseña</label>
+            <input type="password" id="pass" name="pass" placeholder="Password" required>
+        </div>  
+        <div class="campo">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Ejemplo@correo.com">
+        </div>  
+        <div class="acciones centro">
+            <button type="reset" class="boton boton-borde">Cancelar</button>
+            <button type="submit" class="boton boton-primario">Registrar</button>
         </div>
-    </div>
+        </form>
+    </section>
 </main>
 
 <footer class="pie">
