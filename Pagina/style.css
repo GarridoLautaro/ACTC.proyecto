@@ -1,384 +1,338 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-/* ========== RESET & BASE ========== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html, body { height: 100%; }
-body {
-    font-family: 'Roboto', sans-serif;
-    background: rgb(39,39,39);
-    display: flex;            /* sticky footer */
-    flex-direction: column;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-main { flex: 1 0 auto; }    /* ocupa alto disponible */
-
-/* ========== NAVBAR ========== */
-.navbar {
-    display: flex;
-    align-items: center;
-    background: #000;
-    padding: 10px 20px;
+html,body{
+    height:100%;
 }
-.logo { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    margin-right: 30px; 
+body{
+    font-family:'Roboto',Arial,Helvetica,sans-serif;
+    background:#272727;
+    display:flex;
+    flex-direction:column;
 }
 
-.logo img { 
-    height: 40px;
-    width: auto; 
+/* main para que el footer se manetenga debajo*/
+
+main{
+    flex:1 0 auto;
 }
 
-.nav-links { list-style: none; 
-    display: flex; 
-    gap: 25px; 
+/* navbar */
+.navbar{
+    display:flex;
+    background:#000;
+    padding:10px 20px;
 }
-
-.nav-links a {
-    color: #3498db;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 300;
-    transition: color .3s ease;
+.logo img{
+    height:60px;
+    width:100px;
 }
-
-.nav-links a:hover { color: #5dade2; }
-
-/* ========== INICIO (HERO) ========== */
-.hero-wrap { padding: 40px 20px 60px; }
-.hero-card{
-    max-width: 900px; margin: 0 auto;
-    background: #757575; padding: 22px; border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-    display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px;
-}
-.hero-img{
-    background: #fff; border-radius: 4px; padding: 12px;
-    display:flex; align-items:center; justify-content:center;
-}
-.hero-img img{ width: 100%; height: 260px; object-fit: cover; border-radius: 4px; }
-
-/* Blanco hueso para textos de INICIO */
-:root { --hueso: #f2f1ea; }
-.hero-text { color: var(--hueso); display:flex; flex-direction:column; gap:10px; }
-.breve-texto { color: var(--hueso); line-height: 1.6; }
-
-/* Redes (centrado y más grande) */
-.redes { margin-top: 18px; text-align: center; }
-.redes h2 { font-size: 18px; font-weight: 700; color: var(--hueso); margin-bottom: 14px; }
-.redes-icons { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
-.icon-btn{
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    padding:14px 16px; background:#fff; border:1px solid #e5e5e5; border-radius:10px;
-    text-decoration:none; color:#222; font-size:14px; min-width:90px;
-    box-shadow:0 1px 3px rgba(0,0,0,.08);
-    transition: transform .1s, box-shadow .2s, border-color .2s;
-}
-.icon-btn:hover{ transform: translateY(-2px); border-color:#d4d4d4; box-shadow:0 4px 12px rgba(0,0,0,.12); }
-.icon-btn svg{ width:30px; height:30px; }
-
-/* ========== CALENDARIO ========== */
-.calendar-wrap { padding: 100px 20px 50px; max-width:1200px; margin:0 auto; }
-.cal-title { text-align:left; font-weight:300; margin:10px 0 20px; color:#fff; }
-
-.calendar-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.event-card{
-    border-radius: 8px;
-    position:relative; background:#fff; border:1px solid #e6e6e6;
-    box-shadow:0 2px 6px rgba(0,0,0,.06); padding:22px 18px 60px; min-height:340px;
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-.event-card:hover{ transform: scale(1.03); box-shadow: 0 8px 20px rgba(255,255,255,.12); }
-
-.date-badge{ position:absolute; top:14px; left:14px; display:inline-flex; border:1px solid #e6e6e6; }
-.date-badge .day{
-    background:#111; color:#fff; font-weight:700; font-size:22px; line-height:1;
-    padding:8px 10px; min-width:40px; text-align:center;
-}
-.date-badge .mon{ background:#efefef; color:#555; font-weight:700; font-size:14px; letter-spacing:.5px; padding:8px 10px; }
-
-.event-head{ margin:48px 0 10px; }
-.place{ font-size:22px; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
-.red{ color:#e53935; }
-.venue{ color:#666; font-size:14px; }
-
-.track{ margin:14px 0 10px; }
-.track svg, .track img{ width:100%; height:110px; object-fit:contain; }
-
-.podium{ list-style:none; margin-top:6px; color:#333; font-size:14px; line-height:1.5; }
-.podium b{ color:#e53935; margin-right:6px; font-weight:700; }
-
-.more{
-    border-radius: 50px;
-    position:absolute; right:14px; bottom:14px;
-    background:#e53935; color:#fff; border:1px solid #e53935;
-    padding:8px 14px; font-size:13px; cursor:pointer;
-    transition: transform .1s, opacity .2s;
-}
-.more:hover{ opacity:.9; transform: translateY(-1px); }
-
-/* ========== REGISTRO (landing) ========== */
-/* Acá es donde querés que esté la imagen (dentro del card). Si además querés fondo
-   con imagen en esta página, dejá estas 2 líneas y ajustá la ruta: */
-body.registro-page {
-    background: url("../Pagina/Pantallas/Recursos/imagen\ background.jpg") center center / cover no-repeat fixed;
-}
-
-
-.registro-container { padding: 100px 20px 50px; max-width: 1200px; margin: 0 auto; }
-.registro-card {
-    display: flex; gap: 30px;
-    background: rgba(255,255,255,.85);
-    padding: 20px; border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-.registro-img { width: 50%; border-radius: 8px; border: 4px solid #fff; object-fit: cover; }
-.registro-info { width: 50%; display: flex; flex-direction: column; justify-content: center; }
-.registro-info h1 { color: #e53935; margin-bottom: 12px; }
-.registro-info p { color: #333; line-height: 1.5; margin-bottom: 12px; }
-.registro-info h2 { margin: 16px 0 10px; color: #000; }
-
-/* Botones de acción */
-.registro-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn{
-    display:inline-block; padding:10px 18px; font-size:15px; border-radius:8px;
-    text-decoration:none; cursor:pointer;
-    transition: transform .1s, opacity .2s, background .2s, border-color .2s;
-}
-.btn-primary,
-.btn-outline {
-    background: transparent;
-    color: #e53935;      
-    border: 1px solid #e53935; 
-    transition: all 0.2s ease;
-}
-
-.btn-primary:hover,
-.btn-outline:hover {
-    background: rgba(229, 57, 53, 0.1);
-    transform: translateY(-1px);
-}
-
-
-/* ========== FORMULARIO: ACTUALIZAR CAMPEONATO ========== */
-.container { width: 100%; max-width: 720px; padding: 30px 20px 60px; margin: 0 auto; }
-.card{
-    background: #ffffff; border: 1px solid #e6e6e6; border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15); overflow: hidden;
-}
-.header{ padding: 20px 20px 6px; }
-.title{ font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; margin: 0 0 4px; color: #e53935; }
-.subtitle{ margin: 0; color: #555; font-size: 14px; }
-
-form { padding: 18px 20px 22px; display: grid; gap: 16px; }
-.grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-@media (min-width: 680px){ .grid{ grid-template-columns: 1fr 1fr; } }
-
-.field{ display:flex; flex-direction:column; gap:8px; }
-label{ font-size:14px; color:#333; }
-input[type="number"], input[type="text"], select{
-    width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;
-    background:#fff; color:#222; outline:none;
-    transition: border-color .2s, box-shadow .2s, transform .04s;
-}
-input::placeholder{ color:#8a8a8a; }
-input:focus, select:focus{ border-color:#e53935; box-shadow: 0 0 0 4px rgba(229,57,53,.15); }
-
-.hint{ font-size:12px; color:#666; }
-.error{ color:#e53935; font-size:12px; display:none; }
-.actions{ display:flex; gap:12px; justify-content:flex-end; padding-top:6px; }
-.actions .btn { border-radius: 8px; }
-.actions .btn-ghost{ background:transparent; color:#222; border:1px solid #d9d9d9; }
-.actions .btn-ghost:hover{ background:#f4f4f4; }
-
-/* ========== FORMULARIO: REGISTRAR PILOTO (más ancho + look igual a campeonato) ========== */
-body.form-page {     background: rgb(39,39,39);; }                    /* mismo fondo que campeonato */
-
-body.form-page .container { max-width: 900px; }            /* MÁS ANCHO que campeonato */
-
-.form-grid{
-    padding: 20px;
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 1fr 1fr;                          /* 2 columnas */
-}
-.form-grid .field.full{ grid-column: span 2; }             /* Observaciones a todo el ancho */
-
-.form-grid input,
-.form-grid select,
-.form-grid textarea{
-    width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;
-    background:#fff; font-size:15px; outline:none;
-    transition: border-color .2s, box-shadow .2s;
-}
-.form-grid input:focus,
-.form-grid select:focus,
-.form-grid textarea:focus{
-    border-color:#e53935; box-shadow:0 0 0 4px rgba(229,57,53,.15);
-}
-
-.form-buttons{ display:flex; gap:12px; justify-content:center; margin-top:20px; }
-
-/* ========== FOOTER (sticky) ========== */
-.footer {
-    background-color: #1b1b1b;
-    color: #fff;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-logo img {
-    width: 120px;
-}
-
-.footer-links, .footer-social {
-    margin: 20px 0;
-}
-
-.footer-links h3,
-.footer-social h3 {
-    margin-bottom: 10px;
-    color: #f44336; /* rojo para resaltar */
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin-bottom: 8px;
-}
-
-.footer-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links ul li a:hover {
-    color: #f44336;
-}
-
-.footer-social .social-icons a {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.footer-social .social-icons img {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s;
-}
-
-.footer-social .social-icons img:hover {
-    transform: scale(1.2);
-}
-
-.footer-bottom {
-    text-align: center;
+.enlaces{
+    display:flex;
+    gap:50px;
+    margin-left:25px;
     margin-top: 20px;
-    font-size: 14px;
-    color: #aaa;
 }
-/* ====== TABLA DE CAMPEONATO ====== */
-.tabla-wrap {
-    max-width: 1000px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,.08);
-    font-family: Arial, sans-serif;
+.enlaces a{
+    color:#3498db;
+    text-decoration:none;
+    font-size:20px;
 }
 
-.tabla-head {
-    display: grid;
-    grid-template-columns: 70px 90px 1fr 140px 120px;
-    background: #3a3a3a;
-    color: #fff;
-    padding: 12px 16px;
-    font-weight: bold;
-    letter-spacing: .5px;
+/* Layouts generales */
+
+.fondo{
+    padding:300px 20px;
 }
 
-.fila {
-    display: grid;
-    grid-template-columns: 70px 90px 1fr 140px 120px;
-    align-items: center;
-    padding: 14px 16px;
-    border-bottom: 1px solid #eee;
-    background: #fff;
+/* Pantalla Inicio */
+.caja-superior{
+    width: 1200px;
+    height: 600px;
+    margin:0 auto;
+    background:#757575;
+    padding:22px;
+    border-radius:6px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:18px;
+}
+.recuadro{
+    height: 550px;
+    background:#f70000;
+    border-radius:8px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.recuadro img{
+    width:100%;
+    height:360px;
+    object-fit:cover;
+    border-radius:9px;
 }
 
-.fila:nth-child(odd) {
-    background: #fafafa;
+.titulo{
+    color:#fff;
+    font-weight:300;
+    margin:10px 0 20px;
+    margin-left: 210px;
+}
+.texto{
+    color:#f2f1ea;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.parrafo{
+    font-size: 20px;
+    line-height:1.9;
+    color:#f2f1ea;
+}
+.sub {
+    color:#fff8f8;
+    margin-top:6px;
 }
 
-.pos {
-    font-weight: 700;
-    color: #555;
+.redes h2{
+    color:#ffffff;
+    margin-top:130px;
+    text-align:center;
+}
+.iconos{
+    margin-top: 15px;
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-left:40px;
+    background:transparent;
 }
 
-.num {
-    color: #666;
-    font-weight: bold;
+.boton-icono img{
+    width:50px;
+    height:40px;
 }
 
-.piloto {
-    font-weight: 800;
-    letter-spacing: .5px;
-    color: #2c2c2c;
+/* Calendario */
+.grilla{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+.tarjeta{
+    position:relative;
+    background:#fff;
+    border:1px solid #e6e6e6;
+    border-radius:8px;
+    padding:22px 18px 60px;
+    min-height:340px;
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+.fecha{
+    position:absolute;
+    top:14px;left:14px;
+    display:inline-flex;
+    border:1px solid #e6e6e6;
+}
+.dia{
+    background:#111;
+    color:#fff;
+    font-weight:700;
+    font-size:22px;
+    line-height:1;
+    padding:8px 10px;
+    min-width:40px;
+    text-align:center;
 }
 
-.marca {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.mes{
+    background:#efefef;
+    color:#555;
+    font-weight:700;
+    font-size:14px;letter-spacing:.5px;
+    padding:8px 10px;
 }
 
-.marca img {
-    height: 22px;
-    width: auto;
-    object-fit: contain;
+.cabecera{
+    margin:48px 0 10px;
+}
+.lugar{
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:4px;
 }
 
-.pts {
-    justify-self: end;
+.sub{
+    color:#666;
 }
 
-.badge-pts {
-    display: inline-block;
-    padding: 8px 14px;
-    font-weight: 800;
-    color: #fff;
-    background: linear-gradient(135deg, #f44336 0%, #e53935 100%);
-    clip-path: polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%);
-    min-width: 88px;
-    text-align: right;
-    border-radius: 2px;
+.pista{
+    margin:14px 0 10px;
+}
+.pista img{
+    width:100%;
+    height:110px;
+    object-fit:contain;
 }
 
-@media (max-width: 700px) {
-    .tabla-head,
-    .fila {
-        grid-template-columns: 58px 70px 1fr 100px 90px;
-        font-size: .9rem;
-    }
+.podio{
+    list-style:none;
+    margin-top:6px;
+    color:#333;
+    font-size:14px;
+    line-height:1.5;
+}
 
-.badge-pts {
-        min-width: 72px;
-        font-size: .85rem;
+.podio b{
+    color:#e53935;
+    margin-right:6px;
 }
+
+.mas{
+    position:absolute;
+    right:14px;bottom:14px;
+    background:#e53935;
+    color:#fff;border:1px solid #e53935;
+    border-radius:50px;
+    padding:8px 14px;
+    font-size:13px;cursor:pointer;
 }
+
+/* Registro (landing) */
+.fondo-registro{background:url("../Pagina/Pantallas/Recursos/imagen background.jpg") center/cover no-repeat fixed}
+
+.caja{
+    display:flex;
+    gap:20px;
+    background:rgba(255,255,255,.9);
+    padding:20px;border-radius:12px;
+}
+
+.imagen{
+    width:50%;
+    border-radius:8px;
+    border:4px solid #fff;
+    object-fit:cover;
+}
+
+.info{
+    width:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.acciones{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.boton-primario{
+    border-color:#e53935;
+    color:#e53935;
+}
+.boton-borde{
+    border-color:#ccc;
+    color:#222;
+}
+
+/* Formularios */
+.cabecera{
+    padding:10px 10px 0;
+}
+.caja form{
+    padding:14px 10px 16px;
+    display:grid;gap:14px;
+}
+.grilla{
+    display:grid;
+    gap:14px;
+}
+@media(min-width:680px){.grilla{grid-template-columns:1fr 1fr}}
+
+.campo{display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+label{
+    font-size:14px;
+    color:#333;
+}
+input[type="number"],input[type="text"],select,textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;color:#222;outline:none}
+input::placeholder,textarea::placeholder{color:#8a8a8a}
+.ayuda{font-size:12px;color:#666}
+.error{font-size:12px;color:#e53935;display:none}
+.ancho .caja{max-width:900px;margin:0 auto}
+.grilla-form{padding:10px;display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.grilla-form .completo{grid-column:span 2}
+.acciones.derecha{justify-content:flex-end}
+.acciones.centro{justify-content:center}
+
+/* Tabla campeonato */
+.tabla{
+    max-width:1000px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+.tabla-encabezado{
+    display:grid;
+    grid-template-columns:70px 90px 1fr 140px 120px;
+    background:#3a3a3a;
+    color:#fff;
+    padding:12px 16px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+.fila{
+    display:grid;
+    grid-template-columns:70px 90px 1fr 140px 120px;
+    align-items:center;
+    padding:14px 16px;
+    border-bottom:1px solid #eee;
+    background:#fff;
+}
+.fila:nth-child(odd){background:#fafafa}
+.pos{font-weight:700;color:#555}
+.num{color:#666;font-weight:700}
+.piloto{font-weight:800;letter-spacing:.5px;color:#2c2c2c}
+.marca{display:flex;align-items:center;gap:8px}
+.marca img{height:22px;width:auto;object-fit:contain}
+.pts{text-align:right}
+.cifra{display:inline-block;padding:8px 14px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f44336 0%,#e53935 100%);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);min-width:88px;text-align:right}
+
+/* Pie */
+.pie{
+    background:#1b1b1b;
+    color:#fff;
+    padding:40px 20px 20px;
+}
+.pie-contenedor{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    max-width:1200px;
+    margin:0 auto;
+    gap:16px;
+}
+.pie-logo img{
+    width:120px;
+}
+.pie-links h3,.pie-redes h3{margin-bottom:10px;color:#f44336}
+.pie-links ul{list-style:none}
+.pie-links li{margin-bottom:8px}
+.pie a{text-decoration:none;color:#fff}
+.pie a:hover{color:#f44336}
+.redes-iconos a{display:inline-block;margin-right:12px}
+.redes-iconos img{width:30px;height:30px}
+.pie-bottom{text-align:center;margin-top:18px;font-size:14px;color:#aaa}
+

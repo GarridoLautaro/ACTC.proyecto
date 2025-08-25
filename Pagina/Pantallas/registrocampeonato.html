@@ -1,89 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Actualizar Campeonato</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Actualizar Campeonato</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC" /></div>
-    <ul class="nav-links">
-        <li><a href="inicio.html">INICIO</a></li>
-        <li><a href="campeonato.html">CAMPEONATO</a></li>
-        <li><a href="calendario.html">CALENDARIO</a></li>
-        <li><a href="registro.html" class="active">REGISTRO</a></li>
-    </ul>
+  <div class="logo"><img src="Recursos/LOGO.png" alt="Logo ACTC" /></div>
+  <ul class="enlaces">
+    <li><a href="inicio.html">INICIO</a></li>
+    <li><a href="campeonato.html">CAMPEONATO</a></li>
+    <li><a href="calendario.html">CALENDARIO</a></li>
+    <li><a href="registro.html" class="activo">REGISTRO</a></li>
+  </ul>
 </nav>
 
-<main class="container">
-    <section class="card">
-        <header class="header">
-            <h1 class="title">Actualizar Campeonato</h1>
-            <p class="subtitle">Ingresá el <strong>ID del piloto</strong>, el <strong>puntaje sumado</strong> y la <strong>marca</strong>.</p>
-        </header>
-        <form id="form-campeonato" action="/ACTC.proyecto/Pagina/api/actualizar_campeonato.php" method="post" novalidate>
-            <div class="grid">
-                <div class="field">
-                    <label for="piloto_id">ID de Piloto</label>
-                    <input id="piloto_id" name="piloto_id" type="number" inputmode="numeric" placeholder="Ej: 23" min="1" step="1" required />
-                    <span class="error" id="err-id">Ingresá un ID válido (entero > 0).</span>
-                </div>
-                <div class="field">
-                    <label for="puntaje">Puntaje sumado</label>
-                    <input id="puntaje" name="puntaje" type="number" inputmode="decimal" placeholder="Ej: 15" min="0" step="0.5" required />
-                    <span class="hint">Admite decimales (ej.: 7.5)</span>
-                    <span class="error" id="err-pts">Ingresá un puntaje válido (0 o más).</span>
-                </div>
-            </div>
-            <div class="grid">
-                <div class="field">
-                    <label for="marca">Marca</label>
-                    <select id="marca" name="marca" required>
-                        <option value="">Seleccioná una marca</option>
-                        <option>Ford</option>
-                        <option>Chevrolet</option>
-                        <option>Toyota</option>
-                        <option>Renault</option>
-                    </select>
-                </div>
-            </div>
-            <div class="actions">
-                <button type="reset" class="btn btn-ghost">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-            </div>
-        </form>
-    </section>
+<main class="contenedor">
+  <section class="caja">
+    <header class="cabecera">
+      <h1 class="titulo rojo">Actualizar Campeonato</h1>
+      <p class="sub">Ingresá el ID del piloto, el puntaje sumado y la marca.</p>
+    </header>
+    <form id="form-campeonato" action="/ACTC.proyecto/Pagina/api/actualizar_campeonato.php" method="post" novalidate>
+      <div class="grilla">
+        <div class="campo">
+          <label for="piloto_id">ID de Piloto</label>
+          <input id="piloto_id" name="piloto_id" type="number" inputmode="numeric" placeholder="Ej: 23" min="1" step="1" required />
+          <span class="error" id="err-id">Ingresá un ID válido.</span>
+        </div>
+        <div class="campo">
+          <label for="puntaje">Puntaje sumado</label>
+          <input id="puntaje" name="puntaje" type="number" inputmode="decimal" placeholder="Ej: 15" min="0" step="0.5" required />
+          <span class="ayuda">Podés usar decimales.</span>
+          <span class="error" id="err-pts">Ingresá un puntaje válido.</span>
+        </div>
+      </div>
+      <div class="grilla">
+        <div class="campo">
+          <label for="marca">Marca</label>
+          <select id="marca" name="marca" required>
+            <option value="">Seleccioná una marca</option>
+            <option>Ford</option>
+            <option>Chevrolet</option>
+            <option>Toyota</option>
+            <option>Renault</option>
+          </select>
+        </div>
+      </div>
+      <div class="acciones derecha">
+        <button type="reset" class="boton boton-borde">Cancelar</button>
+        <button type="submit" class="boton boton-primario">Actualizar</button>
+      </div>
+    </form>
+  </section>
 </main>
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <img src="./Recursos/marcas/logoactc.png" alt="ACTC Logo">
-        </div>
-        <div class="footer-links">
-            <h3>TC</h3>
-            <ul>
-                <li><a href="./inicio.html">Inicio</a></li>
-                <li><a href="./calendario.html">Calendario</a></li>
-                <li><a href="./campeonato.html">Resultados</a></li>
-                <li><a href="./registro.html">Registro</a></li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <h3>Seguinos</h3>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/actcargentina"><img src="ruta/a/instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@actcargentina"><img src="ruta/a/youtube.png" alt="YouTube"></a>
-                <a href="https://actc.org.ar/tc/index.html"><img src="ruta/a/web.png" alt="Web"></a>
-            </div>
-        </div>
+<footer class="pie">
+  <div class="pie-contenedor">
+    <div class="pie-logo"><img src="./Recursos/marcas/logoactc.png" alt="ACTC Logo"></div>
+    <div class="pie-links">
+      <h3>TC</h3>
+      <ul>
+        <li><a href="./inicio.html">Inicio</a></li>
+        <li><a href="./calendario.html">Calendario</a></li>
+        <li><a href="./campeonato.html">Resultados</a></li>
+        <li><a href="./registro.html">Registro</a></li>
+      </ul>
     </div>
-    <div class="footer-bottom">
-        <p>© 2025 ACTC. Todos los derechos reservados.</p>
+    <div class="pie-redes">
+      <h3>Seguinos</h3>
+      <div class="redes-iconos">
+        <a href="https://www.instagram.com/actcargentina"><img src="ruta/a/instagram.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@actcargentina"><img src="ruta/a/youtube.png" alt="YouTube"></a>
+        <a href="https://actc.org.ar/tc/index.html"><img src="ruta/a/web.png" alt="Web"></a>
+      </div>
     </div>
+  </div>
+  <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
 </footer>
 </body>
 </html>

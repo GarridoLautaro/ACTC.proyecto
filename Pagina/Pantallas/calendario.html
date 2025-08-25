@@ -1,245 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Calendario ACTC</title>
-    <link rel="stylesheet" href="../style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendario ACTC</title>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
-    <div class="logo">
-        <img src="./Recursos/LOGO.png" alt="LOGO ACTC">
-    </div>
-    <ul class="nav-links">
-        <li><a href="inicio.html">INICIO</a></li>
-        <li><a href="campeonato.html">CAMPEONATO</a></li>
-        <li><a href="calendario.html">CALENDARIO</a></li>
-        <li><a href="registro.html">REGISTRO</a></li>
-    </ul>
+  <div class="logo">
+    <img src="./Recursos/LOGO.png" alt="LOGO ACTC">
+  </div>
+  <ul class="enlaces">
+    <li><a href="inicio.html">INICIO</a></li>
+    <li><a href="campeonato.html">CAMPEONATO</a></li>
+    <li><a href="calendario.html" class="activo">CALENDARIO</a></li>
+    <li><a href="registro.html">REGISTRO</a></li>
+  </ul>
 </nav>
 
-<!-- Contenido principal -->
-<main class="calendar-wrap">
-    <h1 class="cal-title">Calendario 2025</h1>
+<main class="contenedor">
+  <h1 class="titulo">Calendario 2025</h1>
 
-    <section class="calendar-grid">
-
-        <!-- Ejemplo tarjeta -->
-    <article class="event-card">
-        <div class="date-badge">
-            <span class="day">16</span>
-            <span class="mon">FEB</span>
-        </div>
-        <header class="event-head">
-            <h2 class="place red">NEUQUÉN</h2>
-            <p class="venue">Provincia de Neuquén</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/neuquen.png" alt="Circuito de Neuquén">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+  <section class="grilla">
+    <article class="tarjeta">
+      <div class="fecha">
+        <span class="dia">16</span>
+        <span class="mes">FEB</span>
+      </div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">NEUQUÉN</h2>
+        <p class="sub">Provincia de Neuquén</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/neuquen.png" alt="Circuito de Neuquén">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 2 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">09</span><span class="mon">MAR</span></div>
-        <header class="event-head">
-            <h2 class="place red">LA PAMPA</h2>
-            <p class="venue">Autódromo Provincia de La Pampa (Toay)</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/pampa.png" alt="Circuito de La Pampa">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">09</span><span class="mes">MAR</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">LA PAMPA</h2>
+        <p class="sub">Autódromo Provincia de La Pampa (Toay)</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/pampa.png" alt="Circuito de La Pampa">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 3 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">30</span><span class="mon">MAR</span></div>
-        <header class="event-head">
-            <h2 class="place red">BUENOS AIRES</h2>
-            <p class="venue">Autódromo Oscar y Juan Gálvez</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/baires.png" alt="Circuito de Buenos Aires">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">30</span><span class="mes">MAR</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">BUENOS AIRES</h2>
+        <p class="sub">Autódromo Oscar y Juan Gálvez</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/baires.png" alt="Circuito de Buenos Aires">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 4 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">20</span><span class="mon">ABR</span></div>
-        <header class="event-head">
-            <h2 class="place red">TRELEW</h2>
-            <p class="venue">Autódromo Mar y Valle</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/trelew.png" alt="Circuito de Trelew">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">20</span><span class="mes">ABR</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">TRELEW</h2>
+        <p class="sub">Autódromo Mar y Valle</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/trelew.png" alt="Circuito de Trelew">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 5 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">11</span><span class="mon">MAY</span></div>
-        <header class="event-head">
-            <h2 class="place red">MADRYN</h2>
-            <p class="venue">Circuito Puerto Madryn</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/madryn.png" alt="Circuito de Madryn">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">11</span><span class="mes">MAY</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">MADRYN</h2>
+        <p class="sub">Circuito Puerto Madryn</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/madryn.png" alt="Circuito de Madryn">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 6 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">01</span><span class="mon">JUN</span></div>
-        <header class="event-head">
-            <h2 class="place red">TERMAS DEL RÍO HONDO</h2>
-            <p class="venue">Autódromo Internacional – Largo</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/termas.png" alt="Circuito de Termas del Río Hondo">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">01</span><span class="mes">JUN</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">TERMAS DEL RÍO HONDO</h2>
+        <p class="sub">Autódromo Internacional – Largo</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/termas.png" alt="Circuito de Termas del Río Hondo">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 7 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">22</span><span class="mon">JUN</span></div>
-        <header class="event-head">
-            <h2 class="place red">LA RIOJA</h2>
-            <p class="venue">Autódromo de La Rioja</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/rioja.png" alt="Circuito de La Rioja">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">22</span><span class="mes">JUN</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">LA RIOJA</h2>
+        <p class="sub">Autódromo de La Rioja</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/rioja.png" alt="Circuito de La Rioja">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 8 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">13</span><span class="mon">JUL</span></div>
-        <header class="event-head">
-            <h2 class="place red">RÍO GRANDE</h2>
-            <p class="venue">Autódromo Ciudad de Río Grande</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/riogrnade.png" alt="Circuito de Río Grande">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">13</span><span class="mes">JUL</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">RÍO GRANDE</h2>
+        <p class="sub">Autódromo Ciudad de Río Grande</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/riogrnade.png" alt="Circuito de Río Grande">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 9 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">03</span><span class="mon">AGO</span></div>
-        <header class="event-head">
-            <h2 class="place red">MENDOZA</h2>
-            <p class="venue">Autódromo Jorge Ángel Pena</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/mendoza.png" alt="Circuito de Mendoza">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">03</span><span class="mes">AGO</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">MENDOZA</h2>
+        <p class="sub">Autódromo Jorge Ángel Pena</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/mendoza.png" alt="Circuito de Mendoza">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
 
-        <!-- 10 -->
-    <article class="event-card">
-        <div class="date-badge"><span class="day">07</span><span class="mon">SEP</span></div>
-        <header class="event-head">
-            <h2 class="place red">CÓRDOBA</h2>
-            <p class="venue">Autódromo Oscar Cabalén</p>
-        </header>
-        <div class="track">
-            <img src="Recursos/cordoba.png" alt="Circuito de Córdoba">
-        </div>
-        <ul class="podium">
-            <li><b>1°</b> Garrido Lautaro</li>
-            <li><b>2°</b> Bruno Martin</li>
-            <li><b>3°</b> Joaquin Lorente</li>
-        </ul>
-        <button class="more">Ver Más&nbsp;+</button>
+    <article class="tarjeta">
+      <div class="fecha"><span class="dia">07</span><span class="mes">SEP</span></div>
+      <header class="cabecera">
+        <h2 class="lugar rojo">CÓRDOBA</h2>
+        <p class="sub">Autódromo Oscar Cabalén</p>
+      </header>
+      <div class="pista">
+        <img src="Recursos/cordoba.png" alt="Circuito de Córdoba">
+      </div>
+      <ul class="podio">
+        <li><b>1°</b> Garrido Lautaro</li>
+        <li><b>2°</b> Bruno Martin</li>
+        <li><b>3°</b> Joaquin Lorente</li>
+      </ul>
+      <button class="boton mas">Ver Más +</button>
     </article>
-
-    </section>
+  </section>
 </main>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <img src="./Recursos/marcas/logoactc.png" alt="ACTC Logo">
-        </div>
-        <div class="footer-links">
-            <h3>TC</h3>
-            <ul>
-                <li><a href="./inicio.html">Inicio</a></li>
-                <li><a href="./calendario.html">Calendario</a></li>
-                <li><a href="./campeonato.html">Resultados</a></li>
-                <li><a href="./registro.html">Registro</a></li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <h3>Seguinos</h3>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/actcargentina"><img src="ruta/a/instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@actcargentina"><img src="ruta/a/youtube.png" alt="YouTube"></a>
-                <a href="https://actc.org.ar/tc/index.html"><img src="ruta/a/web.png" alt="Web"></a>
-            </div>
-        </div>
+<footer class="pie">
+  <div class="pie-contenedor">
+    <div class="pie-logo"><img src="./Recursos/marcas/logoactc.png" alt="ACTC"></div>
+    <div class="pie-links">
+      <h3>TC</h3>
+      <ul>
+        <li><a href="./inicio.html">Inicio</a></li>
+        <li><a href="./calendario.html">Calendario</a></li>
+        <li><a href="./campeonato.html">Resultados</a></li>
+        <li><a href="./registro.html">Registro</a></li>
+      </ul>
     </div>
-    <div class="footer-bottom">
-        <p>© 2025 ACTC. Todos los derechos reservados.</p>
+    <div class="pie-redes">
+      <h3>Seguinos</h3>
+      <div class="redes-iconos">
+        <a href="https://www.instagram.com/actcargentina"><img src="ruta/a/instagram.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@actcargentina"><img src="ruta/a/youtube.png" alt="YouTube"></a>
+        <a href="https://actc.org.ar/tc/index.html"><img src="ruta/a/web.png" alt="Web"></a>
+      </div>
     </div>
+  </div>
+  <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
 </footer>
 </body>
 </html>
