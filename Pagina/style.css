@@ -254,7 +254,16 @@ main{
     font-weight:700;                 
     text-decoration:none; 
     font-size:15px;                             
-}                
+}  
+
+.boton:hover {
+    transition: 1s;
+    transform: translateY(-3px);
+    background-color: rgb(241, 69, 69);
+    color: white;
+    cursor: pointer;
+}
+
 .acciones{ 
     display:flex; 
     gap:12px; 
