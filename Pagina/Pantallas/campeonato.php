@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../api/auth.php';
-require_login(); 
+require __DIR__ . '/../api/auth.php';  // NO require_login()
+include __DIR__ . '/../parcial/header.php';
 ?>
 
 <!DOCTYPE html>

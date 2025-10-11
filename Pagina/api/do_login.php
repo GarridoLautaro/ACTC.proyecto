@@ -2,35 +2,30 @@
 require __DIR__ . '/db.php';
 require __DIR__ . '/auth.php';
 
-// Tomo campos del formulario (con fallback por si el name difiere)
 $nombre   = trim($_POST['nombre']   ?? '');
 $apellido = trim($_POST['apellido'] ?? '');
-$pass     = $_POST['pass'] 
-         ?? $_POST['password'] 
-         ?? $_POST['contrasena'] 
-         ?? '';
+$pass     = $_POST['pass'] ?? $_POST['password'] ?? '';
 
 if ($nombre === '' || $apellido === '' || $pass === '') {
-  header("Location: ../login.php?e=datos_faltantes");
+  header('Location: ../Pantallas/' . LOGIN_FILE . '?e=badlogin');
   exit;
 }
 
-$sql = "SELECT id_usuario, `contraseña` AS contrasena
-        FROM `usuarios`
-        WHERE nombre = ? AND apellido = ?
-        LIMIT 1";
-
-$stmt = $pdo->prepare($sql);
+$stmt = $pdo->prepare("
+  SELECT id_usuario, `contraseña` AS contrasena
+  FROM usuarios
+  WHERE nombre = ? AND apellido = ?
+  LIMIT 1
+");
 $stmt->execute([$nombre, $apellido]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($user && password_verify($pass, $user['contrasena'])) {
-  login_user((int)$user['id_usuario']);  
-  header("Location: ../Pantallas/inicio.php");
-  exit;
-} else {
-  header("Location: ../login.php?e=badlogin"); 
+if ($user && $pass === $user['contrasena']) {
+  login_user((int)$user['id_usuario']);
+  header('Location: ../Pantallas/inicio.php');
   exit;
 }
 
-?>
+// Si falla:
+header('Location: ../Pantallas/' . LOGIN_FILE . '?e=badlogin');
+exit;

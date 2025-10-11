@@ -1,9 +1,7 @@
 <?php
 require __DIR__ . '/../api/auth.php';
-require_login(); 
+include __DIR__ . '/../parcial/header.php';
 ?>
-
-/* http://localhost/ACTC.proyecto/Pagina/Pantallas/inicio.php */
 
 <!DOCTYPE html>
 <html lang="es">
