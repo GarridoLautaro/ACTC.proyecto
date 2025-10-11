@@ -1,3 +1,10 @@
+<?php
+require __DIR__ . '/../api/auth.php';
+require_login(); 
+?>
+
+/* http://localhost/ACTC.proyecto/Pagina/Pantallas/inicio.php */
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,19 +14,6 @@
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-
-<nav class="navbar">
-    <div class="logo">
-        <img src="./Recursos/LOGO.png" alt="Logo ACTC">
-    </div>
-    <ul class="enlaces">
-        <li><a href="inicio.html" class="activo">INICIO</a></li>
-        <li><a href="campeonato.html">CAMPEONATO</a></li>
-        <li><a href="calendario.html">CALENDARIO</a></li>
-        <li><a href="login.html">LOGIN</a></li>
-        <li><a href="registro.html">REGISTRO</a></li>
-    </ul>
-</nav>
 
 <main class="fondo">
     <section class="caja-superior">

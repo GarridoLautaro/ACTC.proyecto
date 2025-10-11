@@ -1,3 +1,8 @@
+<?php
+require __DIR__ . '/../api/auth.php';
+require_login(); 
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,19 +12,6 @@
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-
-<nav class="navbar">
-    <div class="logo">
-        <img src="./Recursos/LOGO.png" alt="LOGO ACTC">
-    </div>
-        <ul class="enlaces">
-        <li><a href="inicio.html">INICIO</a></li>
-        <li><a href="campeonato.html">CAMPEONATO</a></li>
-        <li><a href="calendario.html">CALENDARIO</a></li>
-        <li><a href="login.html" class="activo">LOGIN</a></li>
-        <li><a href="registro.html" class="activo">REGISTRO</a></li>
-    </ul>
-</nav>
 
 <main class="contenedor">
     <h1 class="titulo">Calendario 2025</h1> 
