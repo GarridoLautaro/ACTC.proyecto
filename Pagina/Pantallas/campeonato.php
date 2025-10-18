@@ -1,47 +1,57 @@
 <?php
-require __DIR__ . '/../api/auth.php';  // NO require_login()
+require __DIR__ . '/../api/auth.php'; 
 include __DIR__ . '/../parcial/header.php';
-?>
+require_once __DIR__ . '/../api/db.php';
 
-<!DOCTYPE html>
+$sql = "SELECT p.numero, p.nombre, p.puntos,
+        m.logo_url AS logo, m.nombre AS marca_nombre
+        FROM pilotos p
+        INNER JOIN marcas m ON p.marca = m.id
+        ORDER BY p.puntos DESC, p.nombre ASC";
+$res   = $conn->query($sql);
+$filas = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+?>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
   <title>Campeonato ACTC</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css?v=18">
 </head>
 <body>
-
-<main class="tabla">
-  <div class="tabla-encabezado">
-    <div>POS.</div><div>NÚMERO</div><div>PILOTO</div><div>MARCA</div><div>PTOS.</div>
-  </div>
-  <div id="tabla-body"></div>
-</main>
-
-<footer class="pie">
-  <div class="pie-contenedor">
-    <div class="pie-logo"><img src="./Recursos/marcas/logoactc.png" alt="ACTC"></div>
-    <div class="pie-links">
-      <h3>TC</h3>
-      <ul>
-        <li><a href="./inicio.html">Inicio</a></li>
-        <li><a href="./calendario.html">Calendario</a></li>
-        <li><a href="./campeonato.html">Resultados</a></li>
-        <li><a href="./registro.html">Registro</a></li>
-      </ul>
+  <main class="contenedor">
+    <div class="tabla-wrap">
+      <table class="tabla-actc">
+        <thead>
+          <tr>
+            <th class="col-pos">POS.</th>
+            <th class="col-num">NÚMERO</th>
+            <th class="col-piloto">PILOTO</th>
+            <th class="col-marca">MARCA</th>
+            <th class="col-puntos">PUNTAJE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if (!$filas): ?>
+            <tr><td colspan="5">No hay datos para mostrar</td></tr>
+          <?php else: $pos=1; foreach ($filas as $f): ?>
+            <?php
+              // logo_url se guarda relativo a /Pagina (ej: Pantallas/Recursos/marcas/ford.png)
+              $logoRel = $f['logo'] ? "../" . ltrim($f['logo'], "/") : "";
+              $marcaHtml = $logoRel ? "<img src='{$logoRel}' alt='".htmlspecialchars($f['marca_nombre'])."'>"
+                                    : htmlspecialchars($f['marca_nombre']);
+            ?>
+            <tr>
+              <td class="pos-celda"><span class="pos-badge"><?= $pos ?></span></td>
+              <td class="num"><?= (int)$f['numero'] ?></td>
+              <td class="piloto"><?= strtoupper(htmlspecialchars($f['nombre'])) ?></td>
+              <td class="marca"><?= $marcaHtml ?></td>
+              <td class="puntos"><?= htmlspecialchars($f['puntos']) ?></td>
+            </tr>
+          <?php $pos++; endforeach; endif; ?>
+        </tbody>
+      </table>
     </div>
-    <div class="pie-redes">
-      <h3>Seguinos</h3>
-      <div class="redes-iconos">
-                <a href="https://www.instagram.com/actcargentina"><img src="./Recursos/instagram-svgrepo-com (1).svg" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@actcargentina"><img src="./Recursos/youtube-svgrepo-com.svg" alt="YouTube"></a>
-                <a href="https://actc.org.ar/tc/index.html"><img src="./Recursos/global-svgrepo-com.svg" alt="Web"></a>
-      </div>
-    </div>
-  </div>
-  <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
-</footer>
+  </main>
 </body>
 </html>

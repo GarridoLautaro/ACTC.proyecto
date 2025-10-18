@@ -1,5 +1,4 @@
 <?php
-// Solo usuarios logueados y ADMIN pueden ver esta pantalla
 require __DIR__ . '/../api/auth.php';
 require_login();
 require_admin();

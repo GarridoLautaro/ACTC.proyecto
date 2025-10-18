@@ -1,91 +1,59 @@
 <?php
+require_once __DIR__ . '/../api/db.php';
 require __DIR__ . '/../api/auth.php';
 require_login();
 require_admin();
-
 include __DIR__ . '/../parcial/header.php';
+
+$marcas = $conn->query("
+    SELECT id, nombre 
+    FROM marcas 
+    WHERE nombre IN ('Renault', 'Torino', 'Ford', 'Chevrolet', 'Toyota') 
+    ORDER BY nombre ASC
+");
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
   <title>Registrar Piloto</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css?v=18">
 </head>
 <body>
+  <main class="contenedor">
+    <h1 class="titulo">Registrar Piloto</h1>
 
-<main class="contenedor">
-  <section class="caja caja-form">
-    <header class="cabecera">
-      <h1 class="titulo rojo">Registrar Piloto</h1>
-      <p style="color:#999; margin-top:6px">Completá los datos del nuevo piloto.</p>
-    </header>
+    <form action="../api/add_piloto.php" method="POST" class="caja-form">
+      <div class="grilla-form">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required>
 
-    <!-- Endpoint que inserta en la tabla `pilotos` -->
-    <form class="grilla-form" action="../api/add_piloto.php" method="POST">
-      <div class="campo">
-        <label for="nombre">Nombre del piloto</label>
-        <input type="text" id="nombre" name="nombre" required maxlength="80" placeholder="Ej: Juan Pérez">
-      </div>
+        <label>Edad</label>
+        <input type="number" name="edad" min="14" max="90" required>
 
-      <div class="campo">
-        <label for="edad">Edad</label>
-        <input type="number" id="edad" name="edad" min="0" max="120" required placeholder="Ej: 28">
-      </div>
+        <label>Número</label>
+        <input type="number" name="numero" min="1" required>
 
-      <div class="campo">
-        <label for="numero">Número de auto</label>
-        <input type="number" id="numero" name="numero" min="0" max="9999" required placeholder="Ej: 17">
-      </div>
+        <label>Marca</label>
+        <select name="marca" required>
+          <option value="" disabled selected>Elegí una marca</option>
+          <?php while ($m = $marcas->fetch_assoc()): ?>
+            <option value="<?= (int)$m['id'] ?>"><?= htmlspecialchars($m['nombre']) ?></option>
+          <?php endwhile; ?>
+        </select>
 
-      <div class="campo">
-        <label for="marca">ID de marca</label>
-        <input type="number" id="marca" name="marca" min="1" required placeholder="Ej: 3">
-        <small style="color:#888">Es el <strong>ID</strong> de la marca (ver tabla <em>marcas</em>).</small>
-      </div>
+        <label>Ciudad</label>
+        <input type="text" name="ciudad" required>
 
-      <div class="campo">
-        <label for="ciudad">Ciudad</label>
-        <input type="text" id="ciudad" name="ciudad" required maxlength="56" placeholder="Ej: Balcarce, Buenos Aires">
-      </div>
+        <label>Observaciones</label>
+        <textarea name="observaciones" placeholder="Notas del piloto..."></textarea>
 
-      <div class="campo">
-        <label for="observaciones">Observaciones</label>
-        <textarea id="observaciones" name="observaciones" rows="4" placeholder="Datos adicionales, historial, etc."></textarea>
-      </div>
-
-      <div class="acciones-centro">
-        <button type="reset" class="boton boton-borde">Cancelar</button>
-        <button type="submit" class="boton boton-primario">Guardar piloto</button>
+        <div class="acciones">
+          <button type="submit" class="boton">Guardar piloto</button>
+          <a href="campeonato.php" class="boton">Ver campeonato</a>
+        </div>
       </div>
     </form>
-  </section>
-</main>
-
-<footer class="pie">
-    <div class="pie-contenedor">
-        <div class="pie-logo"><img src="./Recursos/marcas/logoactc.png" alt="ACTC"></div>
-        <div class="pie-links">
-            <h3>TC</h3>
-            <ul>
-                <li><a href="./inicio.html">Inicio</a></li>
-                <li><a href="./calendario.html">Calendario</a></li>
-                <li><a href="./campeonato.html">Resultados</a></li>
-                <li><a href="./registro.html">Registro</a></li>
-            </ul>
-        </div>
-        <div class="pie-redes">
-            <h3>Seguinos</h3>
-            <div class="redes-iconos">
-                <a href="https://www.instagram.com/actcargentina"><img src="./Recursos/instagram-svgrepo-com (1).svg" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@actcargentina"><img src="./Recursos/youtube-svgrepo-com.svg" alt="YouTube"></a>
-                <a href="https://actc.org.ar/tc/index.html"><img src="./Recursos/global-svgrepo-com.svg" alt="Web"></a>
-            </div>
-        </div>
-    </div>
-    <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
-</footer>
-
+  </main>
 </body>
 </html>
