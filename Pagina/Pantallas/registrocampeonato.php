@@ -1,5 +1,4 @@
 <?php
-// Solo usuarios logueados y ADMIN
 require __DIR__ . '/../api/auth.php';
 require_login();
 require_admin();
@@ -23,7 +22,6 @@ include __DIR__ . '/../parcial/header.php';
       <p style="color:#999; margin-top:6px">Cargá el puntaje sumado por un piloto.</p>
     </header>
 
-    <!-- Ajustá el action si tu script se llama distinto (vi uno 'actualizar_cam...' en /api) -->
     <form class="grilla-form" action="../api/actualizar_campeonato.php" method="POST">
       <div class="campo">
         <label for="numero">Número de piloto</label>

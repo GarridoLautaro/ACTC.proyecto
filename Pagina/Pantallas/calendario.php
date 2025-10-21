@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../api/auth.php';  // NO require_login()
+require __DIR__ . '/../api/auth.php';  
 include __DIR__ . '/../parcial/header.php';
 ?>
 
