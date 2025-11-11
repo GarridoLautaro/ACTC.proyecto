@@ -1,11 +1,8 @@
 <?php
 require __DIR__ . '/../api/auth.php';
+if (is_logged_in()) { header('Location: ./inicio.php'); exit; }
 
-if (is_logged_in()) {
-  header('Location: ./inicio.php');
-  exit;
-}
-
+// Mensajes
 $msg = '';
 if (!empty($_GET['e'])) {
   switch ($_GET['e']) {
@@ -14,53 +11,51 @@ if (!empty($_GET['e'])) {
     case 'forbidden':      $msg = 'No tienes permisos para acceder.';            break;
   }
 }
-if (!empty($_GET['ok']) && $_GET['ok'] === 'registered') {
-  $msg = 'Usuario creado. Iniciá sesión.';
-}
+
+// Next (a dónde volver después)
+$next = $_GET['next'] ?? ($_SERVER['HTTP_REFERER'] ?? './inicio.php');
 ?>
-<?php include __DIR__ . '/../parcial/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Login</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-
-<main class="contenedor">
-  <section class="caja caja-form">
-    <header class="cabecera">
-      <h1 class="titulo rojo">Login</h1>
-    </header>
+  <main class="caja-form">
+    <h1 class="titulo">Iniciar sesión</h1>
 
     <?php if ($msg): ?>
-      <div class="alerta alerta-error" style="margin-bottom:12px;"><?= htmlspecialchars($msg) ?></div>
+      <div class="alert error" role="alert"><?= htmlspecialchars($msg) ?></div>
     <?php endif; ?>
 
-    <form class="grilla-form" action="../api/do_login.php" method="POST">
+    <form action="../api/do_login.php" method="post" class="grilla-form">
+      <input type="hidden" name="next" value="<?= htmlspecialchars($next) ?>"/>
+
       <div class="campo">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan">
+        <label>Nombre</label>
+        <input type="text" name="nombre" placeholder="Lautaro" required>
       </div>
+
       <div class="campo">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido" required placeholder="Perez">
+        <label>Apellido</label>
+        <input type="text" name="apellido" placeholder="Garrido" required>
       </div>
+
       <div class="campo">
-        <label for="pass">Contraseña</label>
-        <input type="password" id="pass" name="pass" required placeholder="Password">
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="•••" required>
       </div>
-      <div class="acciones-centro">
-        <button type="reset" class="boton boton-borde">Cancelar</button>
-        <button type="submit" class="boton boton-primario">Entrar</button>
+
+      <div class="acciones">
+        <button class="boton" type="submit">Entrar</button>
+        <a class="boton" href="./inicio.php">Cancelar</a>
       </div>
     </form>
-  </section>
-</main>
-
-<footer class="pie">
+  </main>
+  <footer class="pie">
     <div class="pie-contenedor">
         <div class="pie-logo"><img src="./Recursos/marcas/logoactc.png" alt="ACTC"></div>
         <div class="pie-links">
@@ -83,6 +78,5 @@ if (!empty($_GET['ok']) && $_GET['ok'] === 'registered') {
     </div>
     <div class="pie-bottom">© 2025 ACTC. Todos los derechos reservados.</div>
 </footer>
-
 </body>
 </html>

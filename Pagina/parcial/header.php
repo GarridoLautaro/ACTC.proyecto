@@ -23,7 +23,10 @@ require_once __DIR__ . '/../api/auth.php'; // helpers de sesión; NO redireccion
     <?php if (is_logged_in()): ?>
       <li><a href="/ACTC.proyecto/Pagina/logout.php" class="boton boton-secundario">Cerrar sesión</a></li>
     <?php else: ?>
-      <li><a href="/ACTC.proyecto/Pagina/Pantallas/<?= LOGIN_FILE ?>" class="activo">LOGIN</a></li>
+      <li>
+        <a href="/ACTC.proyecto/Pagina/Pantallas/<?= LOGIN_FILE ?>?next=<?= urlencode($_SERVER['REQUEST_URI'] ?? '/ACTC.proyecto/Pagina/Pantallas/inicio.php') ?>"
+           class="activo">LOGIN</a>
+      </li>
     <?php endif; ?>
   </ul>
 </nav>
