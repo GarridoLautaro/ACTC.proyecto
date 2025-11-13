@@ -23,7 +23,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Provincia de Neuquén</p>
             </header>
             <div class="pista"><img src="Recursos/neuquen.png" alt="Circuito de Neuquén"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">09</span><span class="mes">MAR</span></div>
@@ -32,7 +31,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Provincia de La Pampa (Toay)</p>
             </header>
             <div class="pista"><img src="Recursos/pampa.png" alt="Circuito de La Pampa"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">30</span><span class="mes">MAR</span></div>
@@ -41,7 +39,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Oscar y Juan Gálvez</p>
             </header>
             <div class="pista"><img src="Recursos/baires.png" alt="Circuito de Buenos Aires"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">20</span><span class="mes">ABR</span></div>
@@ -50,7 +47,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Mar y Valle</p>
             </header>
             <div class="pista"><img src="Recursos/trelew.png" alt="Circuito de Trelew"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">11</span><span class="mes">MAY</span></div>
@@ -59,7 +55,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Circuito Puerto Madryn</p>
             </header>
             <div class="pista"><img src="Recursos/madryn.png" alt="Circuito de Madryn"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">01</span><span class="mes">JUN</span></div>
@@ -68,7 +63,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Internacional Largo</p>
             </header>
             <div class="pista"><img src="Recursos/termas.png" alt="Circuito de Termas del Río Hondo"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">22</span><span class="mes">JUN</span></div>
@@ -77,7 +71,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo de La Rioja</p>
             </header>
             <div class="pista"><img src="Recursos/rioja.png" alt="Circuito de La Rioja"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">13</span><span class="mes">JUL</span></div>
@@ -86,7 +79,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Ciudad de Río Grande</p>
             </header>
             <div class="pista"><img src="../Pantallas/Recursos/riogrnade.png" alt="Circuito de Río Grande"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">03</span><span class="mes">AGO</span></div>
@@ -95,7 +87,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Jorge Ángel Pena</p>
             </header>
             <div class="pista"><img src="Recursos/mendoza.png" alt="Circuito de Mendoza"></div>
-            <button class="mas">Ver más</button>
         </article>    
         <article class="tarjeta">
             <div class="fecha"><span class="dia">07</span><span class="mes">SEP</span></div>
@@ -104,7 +95,6 @@ include __DIR__ . '/../parcial/header.php';
                 <p class="sub">Autódromo Oscar Cabalén</p>
             </header>
             <div class="pista"><img src="Recursos/cordoba.png" alt="Circuito de Córdoba"></div>
-            <button class="mas">Ver más</button>
         </article>    
     </section>
 </main>

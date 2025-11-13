@@ -13,9 +13,11 @@ $ciudad = trim($_POST['ciudad'] ?? '');
 $obs    = trim($_POST['observaciones'] ?? '');
 $puntos = 0;
 
-if ($nombre === '' || $edad <= 0 || $numero <= 0 || $marca <= 0 || $ciudad === '') {
-  echo "<script>alert('Faltan datos obligatorios'); history.back();</script>"; exit;
+if ($nombre === '' || $edad < 60 || $edad > 18 || $numero <= 0 || $marca <= 0 || $ciudad === '') {
+  echo "<script>alert('La edad debe ser entre 18 y 60 años'); history.back();</script>";
+  exit;
 }
+
 
 $mk = $conn->prepare("SELECT 1 FROM marcas WHERE id = ?");
 $mk->bind_param("i", $marca);
