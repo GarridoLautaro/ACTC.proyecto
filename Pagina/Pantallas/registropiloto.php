@@ -41,7 +41,7 @@ if (!isset($marcas)) {
 
         <div class="campo">
           <label>Edad</label>
-          <input type="number" name="edad" min="15" max="90" required>
+          <input type="number" name="edad" min="18" max="90" required>
         </div>
 
         <div class="campo">
